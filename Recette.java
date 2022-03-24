@@ -25,7 +25,7 @@ public class Recette extends JFrame {
 		fond.add(titre, BorderLayout.NORTH);
 		
         jTabbedPane1.setBackground(new Color(255, 255, 255));
-        fond.add(jTabbedPane1, BorderLayout.SOUTH);
+        fond.add(jTabbedPane1, BorderLayout.CENTER);
 
         francais.setBackground(new Color(255, 255, 255));
         
