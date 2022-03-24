@@ -15,7 +15,7 @@ public class Accueil extends JFrame{
         super("Happy frigo");
 
         //Dimensions de la fenetre graphique et fermeture
-        this.setSize(600,200);
+        this.setSize(700,700);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         
