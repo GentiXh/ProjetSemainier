@@ -1,4 +1,4 @@
-mport java.awt.*;
+import java.awt.*;
 import javax.swing.*;
 import java.util.*;
 import java.awt.event.*;
@@ -9,9 +9,11 @@ public class RegimeAlimentaire extends JFrame{
 	//attributs
 	JPanel fond;
 	JLabel regimeAlimentaire;
-	JButton buttonOmnivore;
-	JButton buttonVegetarian;
-	JButton buttonVegan;
+	JButton boutonOmnivore;
+	JButton boutonVegetarian;
+	JButton boutonVegan;
+	int regime;
+	Box box = Box.createVerticalBox(); // permet d'aligner verticalement les jpanel
     //Constructeur
     public RegimeAlimentaire() {
 
@@ -19,16 +21,16 @@ public class RegimeAlimentaire extends JFrame{
         super("Regime Alimentaire");
 
         //Dimensions de la fenetre graphique et fermeture
-        this.setSize(600,200);
+        this.setSize(700,700);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		//création des différents éléments de la fenêtre
-        fond = new JPanel();
+        fond = new JPanel(new GridBagLayout());   // permet de mettre au centre de la fenetre
         regimeAlimentaire = new JLabel();
-        buttonOmnivore = new JButton();
-        buttonVegetarian = new JButton();
-        buttonVegan = new JButton();
-
+        boutonOmnivore = new JButton();
+        boutonVegetarian = new JButton();
+        boutonVegan = new JButton();
+	
       
 
         fond.setBackground(new Color(255, 204, 204));
@@ -36,47 +38,43 @@ public class RegimeAlimentaire extends JFrame{
         regimeAlimentaire.setBackground(new Color(255, 204, 153));
         regimeAlimentaire.setFont(new Font("Stencil", 0, 48)); 
         regimeAlimentaire.setText("Régime Alimentaire");
-        regimeAlimentaire.setVerticalAlignment(javax.swing.SwingConstants.TOP); //?
+        regimeAlimentaire.setVerticalAlignment(javax.swing.SwingConstants.TOP); 
 
-        buttonOmnivore.setBackground(new Color(0, 0, 0));
-        buttonOmnivore.setFont(new Font("Stencil", 0, 36));
-        buttonOmnivore.setForeground(new Color(255, 204, 204));
-        buttonOmnivore.setText("Omnivore");
+        boutonOmnivore.setBackground(new Color(0, 0, 0));
+        boutonOmnivore.setFont(new Font("Stencil", 0, 36));
+        boutonOmnivore.setForeground(new Color(255, 204, 204));
+        boutonOmnivore.setText("Omnivore");
         
         //écouteur du bouton omnivore
-        buttonOmnivore.addActionListener(new ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonOmnivoreActionPerformed(evt);
-            }
-        });
-
-        buttonVegetarian.setBackground(new Color(0, 0, 0));
-        buttonVegetarian.setFont(new Font("Stencil", 0, 36)); 
-        buttonVegetarian.setForeground(new Color(255, 204, 204));
-        buttonVegetarian.setText("Végétarian");
+		boutonOmnivore.addActionListener(new EcouteurRegime(this,0));
+        
+        boutonVegetarian.setBackground(new Color(0, 0, 0));
+        boutonVegetarian.setFont(new Font("Stencil", 0, 36)); 
+        boutonVegetarian.setForeground(new Color(255, 204, 204));
+        boutonVegetarian.setText("Vegetarian");
         
         //écouteur du bouton vegetarian
-        buttonVegetarian.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                buttonVegetarianActionPerformed(evt);
-            }
-        });
+        boutonVegetarian.addActionListener(new EcouteurRegime(this, 1)); 
 
-        buttonVegan.setBackground(new Color(0, 0, 0));
-        buttonVegan.setFont(new Font("Stencil", 0, 36));
-        buttonVegan.setForeground(new Color(255, 204, 204));
-        buttonVegan.setText("Végan");
-        buttonVegan.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                buttonVeganActionPerformed(evt);
-            }
-		});
-		
-		
-		
+        boutonVegan.setBackground(new Color(0, 0, 0));
+        boutonVegan.setFont(new Font("Stencil", 0, 36));
+        boutonVegan.setForeground(new Color(255, 204, 204));
+        boutonVegan.setText("Vegan");
+        boutonVegan.addActionListener(new EcouteurRegime(this, 2)); 
+				
+		this.add(fond);
+		fond.add(box);
+		box.add(boutonOmnivore);
+		box.add(boutonVegetarian);
+		box.add(boutonVegan);
+			
        
-       
-        //Rendre la fenêtre visible
+       //Rendre la fenêtre visible
         this.setVisible(true);
     }
+    
+    // met à jour le regime
+    public void setRegime(int val){
+		regime=val;
+	}
 }
