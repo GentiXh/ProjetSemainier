@@ -4,72 +4,70 @@ import java.awt.event.*;
 
 public class Allergie extends JFrame{
 	
+		public JPanel panelChoix;
+		public JButton	validerButton;
+		public AllergiePage2 p2;
+		
 	public Allergie(){
-		JPanel panelAllergie = new JPanel();
+		
+		super("allergies");
+		
+		//pour le depart
 		JLabel titre = new JLabel();
 		JLabel allergieTexte = new JLabel();
 		JButton yesButton = new JButton();
 		JButton noButton = new JButton();
+		validerButton = new JButton();
+		JPanel fond = new JPanel(new BorderLayout());
+		JPanel centre = new JPanel(new GridBagLayout());
 		JPanel panelChoix = new JPanel();
-		JButton	validerButton = new JButton();
-
+	
+		this.setSize(700,700);
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-		panelAllergie.setBackground(new Color(204, 204, 255));
-
+		fond.setBackground(new Color(204, 204, 255));
+		this.add(fond);
+		
+		fond.add(centre, BorderLayout.CENTER);
+		centre.setBackground(new Color(204, 204, 255));
+		
 		titre.setFont(new Font("Stencil", 0, 48));
 		titre.setText("ALLERGIES");
-
+		titre.setBackground(new Color(204, 204, 255));
+		fond.add(titre, BorderLayout.NORTH);
+		
 		allergieTexte.setFont(new java.awt.Font("Stencil", 0, 24));
 		allergieTexte.setText("Allergie :");
-
+		allergieTexte.setBackground(new Color(204, 204, 255));
+		centre.add(allergieTexte);
+		
 		yesButton.setBackground(new Color(0, 0, 0));
 		yesButton.setFont(new Font("Stencil", 0, 24));
 		yesButton.setForeground(new Color(204, 204, 255));
 		yesButton.setText("Oui");
-		yesButton.addActionListener(new java.awt.event.ActionListener() {
-				public void actionPerformed(java.awt.event.ActionEvent evt) {
-					yesButtonActionPerformed(evt);
-				}
-			});
+		yesButton.addActionListener(new EcouteurAllergie(this,true));
+		centre.add(yesButton);
 
 		noButton.setBackground(new java.awt.Color(0, 0, 0));
-		noButton.setFont(new java.awt.Font("Stencil", 0, 24)); // NOI18N
+		noButton.setFont(new java.awt.Font("Stencil", 0, 24));
 		noButton.setForeground(new java.awt.Color(204, 204, 255));
 		noButton.setText("Non");
-		noButton.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent evt) {
-					noButtonActionPerformed(evt);
-				}
-			});
+		noButton.addActionListener(new EcouteurAllergie(this, false));
+		centre.add(noButton);
 
+		
+		
+		//panelChoix.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		panelChoix.setBackground(new Color(204, 204, 255));
-			
-		validerButton.setBackground(new Color(0, 0, 0));
-		validerButton.setFont(new Font("Stencil", 0, 36));
-		validerButton.setForeground(new Color(204, 204, 255));
-		validerButton.setText("Valider");
-	}
+		fond.add(panelChoix, BorderLayout.SOUTH);
+		
+		// deuxieme partie
+		p2 = new AllergiePage2();
+		p2.setSize(700, 700);
+		p2.setLocation(0,0);
+		p2.setVisible(false);
+		panelChoix.add(p2);
+
+		this.setVisible(true);
+    }
         
-    private void yesButtonActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        AllergiePage2 p2 = new AllergiePage2();
-        p2.setSize(700, 270);
-        p2.setLocation(0,0);
-        panelChoix.removeAll();
-        panelChoix.add(p2, BorderLayout.CENTER);
-        panelChoix.add(p2); 
-        panelChoix.revalidate();
-        panelChoix.repaint(); 
-        validerButton.hide();
-      
-    }    
     
-    private void noButtonActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        Recette f = new Recette();
-        f.setVisible(true);
-        
-        //pour cacher l'ancienne fenêtre
-        this.hide();
-    }      
-        
-}
