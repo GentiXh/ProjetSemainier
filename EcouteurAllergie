@@ -1,0 +1,43 @@
+import java.awt.event.*;
+import java.util.*;
+
+public class EcouteurAllergie implements ActionListener{
+	
+	private Allergie fenetre;
+	private boolean resultat;
+		
+	//constructeur
+	public EcouteurAllergie(Allergie fen, boolean res){
+		fenetre=fen;
+		resultat=res;
+	}
+	
+	public void actionPerformed(ActionEvent evt){
+		
+		if(resultat==false){ //on a clique sur 'oui'
+			Recette f = new Recette();
+			
+			f.setVisible(true);
+			
+			//pour cacher l'ancienne fenêtre
+			fenetre.hide();
+			
+			
+		}else if (resultat==true){ // on a clique sur 'non'
+			fenetre.p2.setVisible(true);
+			fenetre.revalidate();
+			fenetre.repaint(); 
+			fenetre.validerButton.hide();
+		}
+		
+		
+	}
+	/*validerButton.setBackground(new Color(0, 0, 0));
+		validerButton.setFont(new Font("Stencil", 0, 36));
+		validerButton.setForeground(new Color(204, 204, 255));
+		validerButton.setText("Valider");*/
+	
+	
+		
+		
+}
