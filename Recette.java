@@ -1,3 +1,7 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
 public class Recette extends JFrame {
 	
 	public Recette(){
@@ -10,15 +14,15 @@ public class Recette extends JFrame {
         JPanel fastfood = new JPanel();
         JPanel petitdej = new JPanel();
         
+       
         this.setSize(700,700);
 
-        
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(700, 700));
         
         fond.setBackground(new Color(204, 255, 204));
 		this.add(fond);
-		
+
         titre.setBackground(new Color(255, 255, 255));
         titre.setFont(new Font("Stencil", 0, 48)); 
         titre.setText("RECETTES");
@@ -46,4 +50,3 @@ public class Recette extends JFrame {
 	
 	
 }
-
