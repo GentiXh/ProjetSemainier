@@ -24,12 +24,7 @@ public class Accueil extends JFrame{
         boutonGO.setFont(new Font("Stencil", 0, 48)); 
         boutonGO.setForeground(new Color(255, 255, 204));
         boutonGO.setText("GO!");
-        
-        /* public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonGOActionPerformed(evt);
-            }
-        }); */
-        
+             
 		titre = new JLabel("HAPPY FRIGO");
 		
 		titre.setFont(new Font("Stencil", 0, 48)); 
@@ -43,7 +38,7 @@ public class Accueil extends JFrame{
 		
 		
 		// branchement de l'écouteur
-		//boutonGO.addActionListener(new EcouteurClic(this));
+		boutonGO.addActionListener(new EcouteurAccueil(this));
 
           
         //ajout du conteneur principal dans la fenetre
@@ -60,13 +55,3 @@ public class Accueil extends JFrame{
         this.setVisible(true);
     }
 }
-
-/*private void buttonGOActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
-        RegimeAlimentaire f = new RegimeAlimentaire();
-        f.setVisible(true);
-        
-        //pour cacher l'ancienne fenêtre
-        this.hide();
-    }      
-    * */
