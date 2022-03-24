@@ -33,14 +33,13 @@ public class Accueil extends JFrame{
 		titre = new JLabel("HAPPY FRIGO");
 		
 		titre.setFont(new Font("Stencil", 0, 48)); 
-        titre.setText("HAPPY FRIGO");
+        titre.setText("HAPPY FRI");
         
-		JPanel fond = new JPanel(new BorderLayout());
-		JPanel bas = new JPanel();
-		JPanel haut = new JPanel();
+		JPanel fond = new JPanel(new GridBagLayout());
 		fond.setBackground( new Color(135,206,250));
-		bas.setBackground( new Color(135,206,250));
-		haut.setBackground( new Color(135,206,250));
+		
+		
+		GridBagConstraints c= new GridBagConstraints();
 		
 		
 		// branchement de l'écouteur
@@ -52,10 +51,9 @@ public class Accueil extends JFrame{
 
 
         //Ajout des éléments graphiques au conteneur principal		
-		bas.add(boutonGO);
-        haut.add(titre);
-		fond.add(bas, BorderLayout.CENTER);		
-		fond.add(haut, BorderLayout.NORTH);
+		
+		fond.add(titre);
+		fond.add(boutonGO);
 		
 		
         //Rendre la fenêtre visible
