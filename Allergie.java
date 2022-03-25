@@ -13,10 +13,10 @@ public class Allergie extends JFrame{
 		super("allergies");
 		
 		//pour le depart
-		JLabel titre = new JLabel();
-		JLabel allergieTexte = new JLabel();
-		JButton yesButton = new JButton();
-		JButton noButton = new JButton();
+		JLabel titre = new JLabel("ALLERGIES",JLabel.CENTER);
+		JLabel allergieTexte = new JLabel("Allergie :");
+		JButton yesButton = new JButton("Oui");
+		JButton noButton = new JButton("Non");
 		validerButton = new JButton();
 		JPanel fond = new JPanel(new BorderLayout());
 		JPanel centre = new JPanel(new GridBagLayout());
@@ -31,26 +31,22 @@ public class Allergie extends JFrame{
 		centre.setBackground(new Color(204, 204, 255));
 		
 		titre.setFont(new Font("Stencil", 0, 48));
-		titre.setText("ALLERGIES");
 		titre.setBackground(new Color(204, 204, 255));
 		fond.add(titre, BorderLayout.NORTH);
 		
 		allergieTexte.setFont(new java.awt.Font("Stencil", 0, 24));
-		allergieTexte.setText("Allergie :");
 		allergieTexte.setBackground(new Color(204, 204, 255));
 		centre.add(allergieTexte);
 		
 		yesButton.setBackground(new Color(0, 0, 0));
 		yesButton.setFont(new Font("Stencil", 0, 24));
 		yesButton.setForeground(new Color(204, 204, 255));
-		yesButton.setText("Oui");
 		yesButton.addActionListener(new EcouteurAllergie(this,true));
 		centre.add(yesButton);
 
 		noButton.setBackground(new java.awt.Color(0, 0, 0));
 		noButton.setFont(new java.awt.Font("Stencil", 0, 24));
 		noButton.setForeground(new java.awt.Color(204, 204, 255));
-		noButton.setText("Non");
 		noButton.addActionListener(new EcouteurAllergie(this, false));
 		centre.add(noButton);
 
