@@ -4,9 +4,18 @@ import java.awt.event.*;
 
 public class Allergie extends JFrame{
 	
-		public JPanel panelChoix;
 		public JButton	validerButton;
-		public AllergiePage2 p2;
+		public JPanel centre;
+		public JButton noButton;
+		public JButton yesButton;
+		public JCheckBox glutenBox;
+		public JCheckBox lactoseBox;
+		public JCheckBox arachideBox;
+		public JCheckBox fodmapBox;
+		public JCheckBox oeufBox;
+		public JCheckBox autresBox;
+		public JLabel allergieTexte;
+		
 		
 	public Allergie(){
 		
@@ -14,14 +23,19 @@ public class Allergie extends JFrame{
 		
 		//pour le depart
 		JLabel titre = new JLabel("ALLERGIES",JLabel.CENTER);
-		JLabel allergieTexte = new JLabel("Allergie :");
-		JButton yesButton = new JButton("Oui");
-		JButton noButton = new JButton("Non");
-		validerButton = new JButton();
-		JPanel fond = new JPanel(new BorderLayout());
-		JPanel centre = new JPanel(new GridBagLayout());
-		JPanel panelChoix = new JPanel();
-	
+		allergieTexte = new JLabel("Allergie :");
+		yesButton = new JButton("Oui");
+		noButton = new JButton("Non");
+		validerButton = new JButton("Valider");
+		JPanel fond = new JPanel(new BorderLayout()); 
+		centre = new JPanel(new GridBagLayout()); 
+		glutenBox = new JCheckBox("Gluten");
+        lactoseBox = new JCheckBox("Lactose");
+        arachideBox = new JCheckBox("Arachide");
+        fodmapBox = new JCheckBox("Fodmap");
+        oeufBox = new JCheckBox("Oeuf");
+        autresBox = new JCheckBox("Autres");
+        
 		this.setSize(700,700);
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		fond.setBackground(new Color(204, 204, 255));
@@ -50,20 +64,51 @@ public class Allergie extends JFrame{
 		noButton.addActionListener(new EcouteurAllergie(this, false));
 		centre.add(noButton);
 
+		validerButton.setBackground(new Color(0, 0, 0));
+		validerButton.setFont(new Font("Stencil", 0, 24));
+		validerButton.setForeground(new Color(204, 204, 255));
+		fond.add(validerButton, BorderLayout.SOUTH);
+		validerButton.setVisible(false); 
 		
-		
-		//panelChoix.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		panelChoix.setBackground(new Color(204, 204, 255));
-		fond.add(panelChoix, BorderLayout.SOUTH);
-		
+				
 		// deuxieme partie
-		p2 = new AllergiePage2();
-		p2.setSize(700, 700);
-		p2.setLocation(0,0);
-		p2.setVisible(false);
-		panelChoix.add(p2);
-
+				
+		centre.add(glutenBox);
+		centre.add(lactoseBox);
+		centre.add(arachideBox);
+		centre.add(fodmapBox);
+		centre.add(oeufBox);
+		centre.add(autresBox);
+	
+		glutenBox.setFont(new java.awt.Font("Stencil", 0, 20));
+		glutenBox.setBackground(new Color(204, 204, 255));
+		
+		arachideBox.setFont(new java.awt.Font("Stencil", 0, 20));
+		arachideBox.setBackground(new Color(204, 204, 255));
+		
+		lactoseBox.setFont(new java.awt.Font("Stencil", 0, 20));
+		lactoseBox.setBackground(new Color(204, 204, 255));
+		
+		oeufBox.setFont(new java.awt.Font("Stencil", 0, 20));
+		oeufBox.setBackground(new Color(204, 204, 255));
+		
+		fodmapBox.setFont(new java.awt.Font("Stencil", 0, 20));
+		fodmapBox.setBackground(new Color(204, 204, 255));
+		
+		autresBox.setFont(new java.awt.Font("Stencil", 0, 20));
+		autresBox.setBackground(new Color(204, 204, 255));
+		
+		
+		
+		
+		glutenBox.setVisible(false);
+		lactoseBox.setVisible(false);
+		arachideBox.setVisible(false);
+		fodmapBox.setVisible(false);
+		oeufBox.setVisible(false);
+		autresBox.setVisible(false);
+		
+		
 		this.setVisible(true);
     }
-        
-    
+   }
