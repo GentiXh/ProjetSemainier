@@ -1,7 +1,7 @@
 public class RegimeAlimentaire {
 	//Je pense que l'appel avec les ppt omnivores,... venant de SQL se fera ici I think
 	
-    public RegimeAlimentaire (String omnivore,String vegetarien,String vegan) {
+    public RegimeAlimentaire (int omnivore,int vegetarien,int vegan) {
         this.omnivore = omnivore;
         this.vegetarien = vegetarien;
         this.vegan = vegan;
