@@ -24,21 +24,19 @@ public class EcouteurAllergie implements ActionListener{
 			
 			
 		}else if (resultat==true){ // on a clique sur 'non'
-			fenetre.p2.setVisible(true);
+			fenetre.centre.remove(fenetre.yesButton);
+			fenetre.centre.remove(fenetre.noButton);
+			fenetre.centre.remove(fenetre.allergieTexte);
+			fenetre.glutenBox.setVisible(true);
+			fenetre.lactoseBox.setVisible(true);
+			fenetre.arachideBox.setVisible(true);
+			fenetre.fodmapBox.setVisible(true);
+			fenetre.oeufBox.setVisible(true);
+			fenetre.autresBox.setVisible(true);
+			
 			fenetre.revalidate();
 			fenetre.repaint(); 
-			fenetre.validerButton.hide();
-		}
-		
-		
-	}
-	/*validerButton.setBackground(new Color(0, 0, 0));
-		validerButton.setFont(new Font("Stencil", 0, 36));
-		validerButton.setForeground(new Color(204, 204, 255));
-		validerButton.setText("Valider");*/
-	
-	
-		
-		
+			fenetre.validerButton.setVisible(true);
+		}	
+	}	
 }
- 
