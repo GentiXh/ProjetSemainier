@@ -15,6 +15,14 @@ public class Allergie extends JFrame{
 		public JCheckBox oeufBox;
 		public JCheckBox autresBox;
 		public JLabel allergieTexte;
+		public boolean gluten;
+		public boolean lactose;
+		public boolean arachide;
+		public boolean fodmap;
+		public boolean oeuf;
+		public boolean autres;
+
+		
 		
 		
 	public Allergie(){
@@ -36,8 +44,15 @@ public class Allergie extends JFrame{
         oeufBox = new JCheckBox("Oeuf");
         autresBox = new JCheckBox("Autres");
         
-		this.setSize(700,700);
-		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+		//récuperer la taille de l'écran + mettre fenetre au centre de l'ecran  + fermeture
+		this.pack();
+		Dimension tailleEcran = Toolkit.getDefaultToolkit().getScreenSize();
+		int height = tailleEcran.height;
+		int width = tailleEcran.width;
+		this.setSize(width/2, height/2);
+		this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		fond.setBackground(new Color(204, 204, 255));
 		this.add(fond);
 		
@@ -68,6 +83,7 @@ public class Allergie extends JFrame{
 		validerButton.setFont(new Font("Stencil", 0, 24));
 		validerButton.setForeground(new Color(204, 204, 255));
 		fond.add(validerButton, BorderLayout.SOUTH);
+		validerButton.addActionListener(new EcouteurValiderAllergie(this));
 		validerButton.setVisible(false); 
 		
 				
@@ -82,24 +98,17 @@ public class Allergie extends JFrame{
 	
 		glutenBox.setFont(new java.awt.Font("Stencil", 0, 20));
 		glutenBox.setBackground(new Color(204, 204, 255));
-		
 		arachideBox.setFont(new java.awt.Font("Stencil", 0, 20));
 		arachideBox.setBackground(new Color(204, 204, 255));
-		
 		lactoseBox.setFont(new java.awt.Font("Stencil", 0, 20));
 		lactoseBox.setBackground(new Color(204, 204, 255));
-		
 		oeufBox.setFont(new java.awt.Font("Stencil", 0, 20));
 		oeufBox.setBackground(new Color(204, 204, 255));
-		
 		fodmapBox.setFont(new java.awt.Font("Stencil", 0, 20));
 		fodmapBox.setBackground(new Color(204, 204, 255));
-		
 		autresBox.setFont(new java.awt.Font("Stencil", 0, 20));
 		autresBox.setBackground(new Color(204, 204, 255));
-		
-		
-		
+	
 		
 		glutenBox.setVisible(false);
 		lactoseBox.setVisible(false);
@@ -107,6 +116,22 @@ public class Allergie extends JFrame{
 		fodmapBox.setVisible(false);
 		oeufBox.setVisible(false);
 		autresBox.setVisible(false);
+		
+		glutenBox.addActionListener(new EcouteurAllergie2(this,1));
+		lactoseBox.addActionListener(new EcouteurAllergie2(this,2));
+		arachideBox.addActionListener(new EcouteurAllergie2(this,3));
+		fodmapBox.addActionListener(new EcouteurAllergie2(this,4));
+		oeufBox.addActionListener(new EcouteurAllergie2(this,5));
+		autresBox.addActionListener(new EcouteurAllergie2(this,6));
+
+
+		// par defaut l'utilisateur n'a pas d'allergies (boolean =false)
+		gluten = false;
+		lactose = false;
+		arachide = false;
+		fodmap = false;
+		oeuf = false;
+		autres = false;
 		
 		
 		this.setVisible(true);
