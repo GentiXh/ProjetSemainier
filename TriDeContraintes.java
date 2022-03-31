@@ -65,5 +65,8 @@ public class TriDeContraintes{
 				}
 			}
 		}
-			
+	
+	public void effacerListeRepas(){
+		listeRecette.clear();
+	}	
 }
