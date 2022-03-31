@@ -1,6 +1,7 @@
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.*;
+import java.util.*;
 
 public class DBConnection {
 	
@@ -8,19 +9,22 @@ public class DBConnection {
 		Connection conDB = null;
 		Statement statement = null;
 		ResultSet query = null;
+		ArrayList<String> output = new ArrayList<String>();
 		try{
 			Class.forName("org.mariadb.jdbc.Driver");
             System.out.println("Driver trouve...");
 			conDB = DriverManager.getConnection(
 				"jdbc:mariadb://localhost:3306/ProjetSemainier", "root", "root");
 				statement = conDB.createStatement();
-				query = statement.executeQuery("Select * from recettes");
+				query = statement.executeQuery("Select nom from ingredients where nom='pomme'");
 				while(query.next()){
 					
-					System.out.println(query.getString("nomRecette"));
+					output.add(query.getString("nom"));
 				}
-				System.out.println("Je suis passe par la ");
 				
+				for (int i = 0; i<output.size(); i++){
+					System.out.println(output.get(i));
+				}
 			} catch (Exception ex) {ex.printStackTrace();}
 			finally{
 				try{query.close();}
@@ -36,7 +40,4 @@ public class DBConnection {
 					e.printStackTrace();
 				}
 			}
-		}
-		
-		
-	}
+		}}
