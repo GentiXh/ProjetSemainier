@@ -1,0 +1,42 @@
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.*;
+
+public class DBConnection {
+	
+	public static void main (String[] args){
+		Connection conDB = null;
+		Statement statement = null;
+		ResultSet query = null;
+		try{
+			Class.forName("org.mariadb.jdbc.Driver");
+            System.out.println("Driver trouve...");
+			conDB = DriverManager.getConnection(
+				"jdbc:mariadb://localhost:3306/ProjetSemainier", "root", "root");
+				statement = conDB.createStatement();
+				query = statement.executeQuery("Select * from recettes");
+				while(query.next()){
+					
+					System.out.println(query.getString("nomRecette"));
+				}
+				System.out.println("Je suis passe par la ");
+				
+			} catch (Exception ex) {ex.printStackTrace();}
+			finally{
+				try{query.close();}
+				catch (Exception e){
+					e.printStackTrace();
+				}
+				try {statement.close();}
+				catch(Exception e){
+					e.printStackTrace();
+				}
+				try{conDB.close();}
+				catch(Exception e){
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		
+	}
