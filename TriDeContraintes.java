@@ -13,11 +13,11 @@ public class TriDeContraintes{
 	private boolean fodmap;
 	
 	private String nationalite;
-	private boolean matin;
 	
-	protected Arraylist<String> listeRecette;
+	protected ArrayList<String> listeRecette1; //repas normaux
+	protected ArrayList<String> listeRecette2; //repas petit dej
 	
-	public class TriDeContraintes(int regime, boolean gluten, boolean oeuf, boolean lactose, boolean arachide, boolean fodmap, String nationalite, boolean matin){
+	public TriDeContraintes(int regime, boolean gluten, boolean oeuf, boolean lactose, boolean arachide, boolean fodmap, String nationalite){
 		this.regime = regime;
 		this.gluten = gluten;
 		this.oeuf = oeuf;
@@ -25,14 +25,15 @@ public class TriDeContraintes{
 		this.arachide = arachide;
 		this.fodmap = fodmap;
 		this.nationalite = nationalite;
-		this.matin = matin;
 	}
 	
 	public void Tri(){
 		Connection conDB = null;
 		Statement statement = null;
-		ResultSet query = null;
-		listeRecette = new ArrayList<String>();	
+		ResultSet query1 = null;
+		ResultSet query2 = null;
+		listeRecette1 = new ArrayList<String>();
+		listeRecette1 = new ArrayList<String>();		
 		
 		try{
 			Class.forName("org.mariadb.jdbc.Driver");
@@ -40,22 +41,46 @@ public class TriDeContraintes{
 			conDB = DriverManager.getConnection(
 				"jdbc:mariadb://localhost:3306/ProjetSemainier", "root", "root");
 				statement = conDB.createStatement();
-				query = statement.executeQuery("Select r.nomRecette from recettes r, ingredients i, compo c where r.idRecette = c.idRecette AND i.idIngredient = c.idIngredient AND i.regime="+regime+" AND i.gluten="+gluten+" AND i.oeuf="+oeuf+" AND i.lactose="+lactose+" AND i.arachide="+arachide+" AND i.fodmap="+fodmap+" AND r.nationalite='"+nationalite+"' AND r.matin="+matin);
-				while(query.next()){
+				
+				query1 = statement.executeQuery("Select r.nomRecette from recettes r, ingredients i, compo c where r.idRecette = c.idRecette AND i.idIngredient = c.idIngredient AND i.regime="+regime+" AND i.gluten="+gluten+" AND i.oeuf="+oeuf+" AND i.lactose="+lactose+" AND i.arachide="+arachide+" AND i.fodmap="+fodmap+" AND r.nationalite='"+nationalite+"' AND r.matin=false");
+				while(query1.next()){
 					
-					listeRecette.add(query.getString("nomRecette"));
+					listeRecette1.add(query1.getString("nomRecette"));
 				}
 				
-				Set<String> listeSansDoublons = new LinkedHashSet<String>(listeRecette);
-				listeRecette.clear();
-				listeRecette.addAll(listeSansDoublons);
-				
-				for (int i = 0; i<output.size(); i++){
-					System.out.println(listeRecette.get(i));
+				Set<String> listeSansDoublons1 = new LinkedHashSet<String>(listeRecette1);
+				listeRecette1.clear();
+				listeRecette1.addAll(listeSansDoublons1);
+
+				query2 = statement.executeQuery("Select r.nomRecette from recettes r, ingredients i, compo c where r.idRecette = c.idRecette AND i.idIngredient = c.idIngredient AND i.regime="+regime+" AND i.gluten="+gluten+" AND i.oeuf="+oeuf+" AND i.lactose="+lactose+" AND i.arachide="+arachide+" AND i.fodmap="+fodmap+" AND r.nationalite='"+nationalite+"' AND r.matin=true");
+				while(query2.next()){
+					
+					listeRecette2.add(query2.getString("nomRecette"));
 				}
+				
+				Set<String> listeSansDoublons2 = new LinkedHashSet<String>(listeRecette2);
+				listeRecette2.clear();
+				listeRecette2.addAll(listeSansDoublons2);
+				
+				System.out.println("Repas normaux");
+				
+				for (int i = 0; i<listeRecette1.size(); i++){
+					System.out.println(listeRecette1.get(i));
+				}
+				
+				System.out.println("Repas petit dej");
+				
+				for (int i = 0; i<listeRecette2.size(); i++){
+					System.out.println(listeRecette2.get(i));
+				}
+				
 			} catch (Exception ex) {ex.printStackTrace();}
 			finally{
-				try{query.close();}
+				try{query1.close();}
+				catch (Exception e){
+					e.printStackTrace();
+				}
+				try{query2.close();}
 				catch (Exception e){
 					e.printStackTrace();
 				}
@@ -70,10 +95,15 @@ public class TriDeContraintes{
 			}
 		}
 		public void effacerContraintes(){
-			listeRecette.clear();
+			listeRecette1.clear();
+			listeRecette2.clear();
 		}
-		public listeRecette <String> getList() {
-			return listeRecette;
+		public ArrayList <String> getListe1() {
+			return listeRecette1;
 		}
-			
+		
+		public ArrayList <String> getListe2(){
+			return listeRecette2;
+		}
 }
+
