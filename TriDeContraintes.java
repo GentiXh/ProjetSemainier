@@ -46,6 +46,10 @@ public class TriDeContraintes{
 					listeRecette.add(query.getString("nomRecette"));
 				}
 				
+				Set<String> listeSansDoublons = new LinkedHashSet<String>(listeRecette);
+				listeRecette.clear();
+				listeRecette.addAll(listeSansDoublons);
+				
 				for (int i = 0; i<output.size(); i++){
 					System.out.println(listeRecette.get(i));
 				}
@@ -65,8 +69,11 @@ public class TriDeContraintes{
 				}
 			}
 		}
-	
-	public void effacerListeRepas(){
-		listeRecette.clear();
-	}	
+		public void effacerContraintes(){
+			listeRecette.clear();
+		}
+		public listeRecette <String> getList() {
+			return listeRecette;
+		}
+			
 }
