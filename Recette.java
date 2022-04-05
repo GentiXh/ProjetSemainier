@@ -15,10 +15,15 @@ public class Recette extends JFrame {
         JPanel petitdej = new JPanel();
         
        
-        this.setSize(700,700);
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(700, 700));
+        //récuperer la taille de l'écran + mettre fenetre au centre de l'ecran  + fermeture
+	this.pack();
+	Dimension tailleEcran = Toolkit.getDefaultToolkit().getScreenSize();
+	int height = tailleEcran.height;
+	int width = tailleEcran.width;
+	this.setSize(width/2, height/2);
+	this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
         
         fond.setBackground(new Color(204, 255, 204));
 		this.add(fond);
