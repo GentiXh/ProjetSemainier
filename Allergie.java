@@ -23,8 +23,6 @@ public class Allergie extends JFrame{
 		public boolean autres;
 
 		
-		
-		
 	public Allergie(){
 		
 		super("allergies");
@@ -38,11 +36,11 @@ public class Allergie extends JFrame{
 		JPanel fond = new JPanel(new BorderLayout()); 
 		centre = new JPanel(new GridBagLayout()); 
 		glutenBox = new JCheckBox("Gluten");
-        lactoseBox = new JCheckBox("Lactose");
-        arachideBox = new JCheckBox("Arachide");
-        fodmapBox = new JCheckBox("Fodmap");
-        oeufBox = new JCheckBox("Oeuf");
-        autresBox = new JCheckBox("Autres");
+        	lactoseBox = new JCheckBox("Lactose");
+        	arachideBox = new JCheckBox("Arachide");
+        	fodmapBox = new JCheckBox("Fodmap");
+        	oeufBox = new JCheckBox("Oeuf");
+        	autresBox = new JCheckBox("Autres");
         
 		//récuperer la taille de l'écran + mettre fenetre au centre de l'ecran  + fermeture
 		this.pack();
@@ -51,7 +49,7 @@ public class Allergie extends JFrame{
 		int width = tailleEcran.width;
 		this.setSize(width/2, height/2);
 		this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		fond.setBackground(new Color(204, 204, 255));
 		this.add(fond);
@@ -85,8 +83,7 @@ public class Allergie extends JFrame{
 		fond.add(validerButton, BorderLayout.SOUTH);
 		validerButton.addActionListener(new EcouteurValiderAllergie(this));
 		validerButton.setVisible(false); 
-		
-				
+			
 		// deuxieme partie
 				
 		centre.add(glutenBox);
@@ -109,7 +106,6 @@ public class Allergie extends JFrame{
 		autresBox.setFont(new java.awt.Font("Stencil", 0, 20));
 		autresBox.setBackground(new Color(204, 204, 255));
 	
-		
 		glutenBox.setVisible(false);
 		lactoseBox.setVisible(false);
 		arachideBox.setVisible(false);
@@ -124,7 +120,6 @@ public class Allergie extends JFrame{
 		oeufBox.addActionListener(new EcouteurAllergie2(this,5));
 		autresBox.addActionListener(new EcouteurAllergie2(this,6));
 
-
 		// par defaut l'utilisateur n'a pas d'allergies (boolean =false)
 		gluten = false;
 		lactose = false;
@@ -132,7 +127,6 @@ public class Allergie extends JFrame{
 		fodmap = false;
 		oeuf = false;
 		autres = false;
-		
 		
 		this.setVisible(true);
     }
