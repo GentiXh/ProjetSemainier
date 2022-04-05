@@ -7,7 +7,16 @@ public class Semainier{
 	// constructeur  
 	public Semainier(){    
 		frameObj = new JFrame();    		 
-
+		
+		//récuperer la taille de l'écran + mettre fenetre au centre de l'ecran  + fermeture
+		frameObj.pack();
+		Dimension tailleEcran = Toolkit.getDefaultToolkit().getScreenSize();
+		int height = tailleEcran.height;
+		int width = tailleEcran.width;
+		frameObj.setSize(width/2, height/2);
+		frameObj.setLocationRelativeTo(null);
+       		frameObj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+		
 		JPanel case1 = new JPanel(new BorderLayout()); 
 		JPanel case2 = new JPanel(new BorderLayout());   
 		JPanel case3 = new JPanel(new BorderLayout());    
@@ -98,9 +107,5 @@ public class Semainier{
 		  
 		// setting the grid layout using the parameterless constructor    
 		frameObj.setLayout(new GridLayout(2,4));    
-		  
-		  
-		frameObj.setSize(700, 700);    
-		frameObj.setVisible(true);    
 	}
 }  
