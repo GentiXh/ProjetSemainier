@@ -22,8 +22,14 @@ public class RegimeAlimentaire extends JFrame{
         //on definit le nom de la fenetre
         super("Regime Alimentaire");
 
-        //Dimensions de la fenetre graphique et fermeture
-        this.setSize(700,700);
+       
+	//récuperer la taille de l'écran + mettre fenetre au centre de l'ecran  + fermeture
+	this.pack();
+	Dimension tailleEcran = Toolkit.getDefaultToolkit().getScreenSize();
+	int height = tailleEcran.height;
+	int width = tailleEcran.width;
+	this.setSize(width/2, height/2);
+	this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		//création des différents éléments de la fenêtre
