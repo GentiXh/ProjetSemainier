@@ -34,7 +34,6 @@ public class TriDeContraintes{
 		this.lactose = lactose;
 		this.arachide = arachide;
 		this.fodmap = fodmap;
-		this.nationalite = nationalite;
 	}
 	
 	public void Tri(){
