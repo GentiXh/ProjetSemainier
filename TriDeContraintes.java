@@ -27,6 +27,16 @@ public class TriDeContraintes{
 		this.nationalite = nationalite;
 	}
 	
+	public TriDeContraintes(int regime, boolean gluten, boolean oeuf, boolean lactose, boolean arachide, boolean fodmap){
+		this.regime = regime;
+		this.gluten = gluten;
+		this.oeuf = oeuf;
+		this.lactose = lactose;
+		this.arachide = arachide;
+		this.fodmap = fodmap;
+		this.nationalite = nationalite;
+	}
+	
 	public void Tri(){
 		Connection conDB = null;
 		Statement statement = null;
@@ -45,22 +55,18 @@ public class TriDeContraintes{
 				query1 = statement.executeQuery("Select r.nomRecette from recettes r, ingredients i, compo c where r.idRecette = c.idRecette AND i.idIngredient = c.idIngredient AND i.regime="+regime+" AND i.gluten="+gluten+" AND i.oeuf="+oeuf+" AND i.lactose="+lactose+" AND i.arachide="+arachide+" AND i.fodmap="+fodmap+" AND r.nationalite='"+nationalite+"' AND r.matin=false");
 				while(query1.next()){
 					
-					listeRecette1.add(query1.getString("nomRecette"));
+					if (!listeRecette1.contains(query1.getString("r.nomRecette"))){
+						listeRecette1.add(query1.getString("r.nomRecette"));
+					}
 				}
-				
-				Set<String> listeSansDoublons1 = new LinkedHashSet<String>(listeRecette1);
-				listeRecette1.clear();
-				listeRecette1.addAll(listeSansDoublons1);
 
-				query2 = statement.executeQuery("Select r.nomRecette from recettes r, ingredients i, compo c where r.idRecette = c.idRecette AND i.idIngredient = c.idIngredient AND i.regime="+regime+" AND i.gluten="+gluten+" AND i.oeuf="+oeuf+" AND i.lactose="+lactose+" AND i.arachide="+arachide+" AND i.fodmap="+fodmap+" AND r.nationalite='"+nationalite+"' AND r.matin=true");
+				query2 = statement.executeQuery("Select r.nomRecette from recettes r, ingredients i, compo c where r.idRecette = c.idRecette AND i.idIngredient = c.idIngredient AND i.regime="+regime+" AND i.gluten="+gluten+" AND i.oeuf="+oeuf+" AND i.lactose="+lactose+" AND i.arachide="+arachide+" AND i.fodmap="+fodmap+" AND r.matin=true");
 				while(query2.next()){
 					
-					listeRecette2.add(query2.getString("nomRecette"));
+					if (!listeRecette2.contains(query2.getString("r.nomRecette"))){
+						listeRecette2.add(query2.getString("r.nomRecette"));
+					}
 				}
-				
-				Set<String> listeSansDoublons2 = new LinkedHashSet<String>(listeRecette2);
-				listeRecette2.clear();
-				listeRecette2.addAll(listeSansDoublons2);
 				
 				System.out.println("Repas normaux");
 				
