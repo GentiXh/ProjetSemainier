@@ -85,14 +85,28 @@ public class TriDeContraintes{
 								listeRecetteAutreCategorie.add(query.getString("r.nomRecette"));
 								break;
 							
-						}
-							
+						}	
 					}
 				}
 				
-				/*for (int i = 0; i<listeRecette1.size(); i++){ // affichage dans console des repas pour debug
-					System.out.println(listeRecette.get(i));
-				}*/
+				for (int i = 0; i<listeRecettePetitDej.size(); i++){ // affichage dans console des repas pour debug
+					System.out.println(listeRecettePetitDej.get(i));
+				}
+				for (int i = 0; i<listeRecetteFrancais.size(); i++){ // affichage dans console des repas pour debug
+					System.out.println(listeRecetteFrancais.get(i));
+				}
+				for (int i = 0; i<listeRecetteItalien.size(); i++){ // affichage dans console des repas pour debug
+					System.out.println(listeRecetteItalien.get(i));
+				}
+				for (int i = 0; i<listeRecetteAsiatique.size(); i++){ // affichage dans console des repas pour debug
+					System.out.println(listeRecetteAsiatique.get(i));
+				}
+				for (int i = 0; i<listeRecetteFastFood.size(); i++){ // affichage dans console des repas pour debug
+					System.out.println(listeRecetteAsiatique.get(i));
+				}
+				for (int i = 0; i<listeRecetteAutreCategorie.size(); i++){ // affichage dans console des repas pour debug
+					System.out.println(listeRecetteAutreCategorie.get(i));
+				}
 			
 				
 			} catch (Exception ex) {ex.printStackTrace();}  // pour retrouver sources des erreurs eventuelles
