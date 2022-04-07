@@ -13,10 +13,14 @@ public class TriDeContraintes{
 	private boolean arachide;
 	private boolean fodmap;
 	
-	private String nationalite;
+	private String nationalite; //TYPE et pas nationalite
 	
-	protected ArrayList<String> listeRecette1; //repas normaux
-	protected ArrayList<String> listeRecette2; //repas petit dej
+	protected ArrayList<String> listeRecettePetitDej; //repas petit dej
+	protected ArrayList<String> listeRecetteFrancais; //repas francais
+	protected ArrayList<String> listeRecetteItalien; //repas italien
+	protected ArrayList<String> listeRecetteAsiatique; //repas asiatique
+	protected ArrayList<String> listeRecetteFastFood; //repas fast food
+	protected ArrayList<String> listeRecetteAutreCategorie;  //repas autre categorie
 	
 	//constructeur
 	public TriDeContraintes(int regime, boolean gluten, boolean oeuf, boolean lactose, boolean arachide, boolean fodmap, String nationalite){
@@ -26,26 +30,21 @@ public class TriDeContraintes{
 		this.lactose = lactose;
 		this.arachide = arachide;
 		this.fodmap = fodmap;
-		this.nationalite = nationalite; //peu inclure "autre"
-	}
-	
-	//constructeur2 pour petits dej uniquement
-	public TriDeContraintes(int regime, boolean gluten, boolean oeuf, boolean lactose, boolean arachide, boolean fodmap){
-		this.regime = regime;
-		this.gluten = gluten;
-		this.oeuf = oeuf;
-		this.lactose = lactose;
-		this.arachide = arachide;
-		this.fodmap = fodmap;
+		this.nationalite = nationalite; 
 	}
 	
 	public void Tri(){
 		Connection conDB = null; 
 		Statement statement = null;
-		ResultSet query1 = null;
-		ResultSet query2 = null;
-		listeRecette1 = new ArrayList<String>(); // initialise recettes pas petits dej
-		listeRecette2 = new ArrayList<String>(); // initialise recettes petits dej
+		ResultSet query = null;
+		// initialise recette 
+		listeRecettePetitDej = new ArrayList<String>(); 
+		listeRecetteFrancais = new ArrayList<String>();
+		listeRecetteItalien = new ArrayList<String>();
+		listeRecetteAsiatique = new ArrayList<String>();
+		listeRecetteFastFood = new ArrayList<String>();
+		listeRecetteAutreCategorie = new ArrayList<String>();
+
 		
 		try{
 			Class.forName("org.mariadb.jdbc.Driver"); // on connecte au driver de la MariaBD
@@ -54,43 +53,51 @@ public class TriDeContraintes{
 				statement = conDB.createStatement();
 				
 				//requetes SQL
-				query1 = statement.executeQuery("Select r.nomRecette from recettes r, ingredients i, compo c where r.idRecette = c.idRecette AND i.idIngredient = c.idIngredient AND i.regime="+regime+" AND i.gluten="+gluten+" AND i.oeuf="+oeuf+" AND i.lactose="+lactose+" AND i.arachide="+arachide+" AND i.fodmap="+fodmap+" AND r.nationalite='"+nationalite+"' AND r.matin=false");
+				query = statement.executeQuery("Select r.nomRecette from recettes r, ingredients i, compo c where r.idRecette = c.idRecette AND i.idIngredient = c.idIngredient AND i.regime="+regime+" AND i.gluten="+gluten+" AND i.oeuf="+oeuf+" AND i.lactose="+lactose+" AND i.arachide="+arachide+" AND i.fodmap="+fodmap+" AND r.nationalite='"+nationalite+"' AND r.matin=false");
 				//pour recettes diff de petits dejeuners
-				while(query1.next()){
+				while(query.next()){
 					
-					if (!listeRecette1.contains(query1.getString("r.nomRecette"))){  // pour eviter doublons
-						listeRecette1.add(query1.getString("r.nomRecette"));
+					if (!listeRecettePetitDej.contains(query.getString("r.nomRecette")) && !listeRecetteFrancais.contains(query.getString("r.nomRecette")) && !listeRecetteItalien.contains(query.getString("r.nomRecette")) && !listeRecetteAsiatique.contains(query.getString("r.nomRecette")) && !listeRecetteFastFood.contains(query.getString("r.nomRecette")) && !listeRecetteAutreCategorie.contains(query.getString("r.nomRecette"))){  // pour eviter doublons
+						
+						switch(query.getString("r.nationalite")){
+							
+							case "petitDej":
+								listeRecettePetitDej.add(query.getString("r.nomRecette"));
+								break;
+								
+							case "francais":
+								listeRecetteFrancais.add(query.getString("r.nomRecette"));
+								break;
+								
+							case "italien":
+								listeRecetteItalien.add(query.getString("r.nomRecette"));
+								break;
+								
+							case "asiatique":
+								listeRecetteAsiatique.add(query.getString("r.nomRecette"));
+								break;
+								
+							case "fastFood":
+								listeRecetteFastFood.add(query.getString("r.nomRecette"));
+								break;
+								
+							case "autreCategorie":
+								listeRecetteAutreCategorie.add(query.getString("r.nomRecette"));
+								break;
+							
+						}
+							
 					}
 				}
-
-				query2 = statement.executeQuery("Select r.nomRecette from recettes r, ingredients i, compo c where r.idRecette = c.idRecette AND i.idIngredient = c.idIngredient AND i.regime="+regime+" AND i.gluten="+gluten+" AND i.oeuf="+oeuf+" AND i.lactose="+lactose+" AND i.arachide="+arachide+" AND i.fodmap="+fodmap+" AND r.matin=true");
-				//pour recettes de petits dejeuners
-				while(query2.next()){
-					
-					if (!listeRecette2.contains(query2.getString("r.nomRecette"))){ // pour eviter doublons
-						listeRecette2.add(query2.getString("r.nomRecette"));
-					}
-				}
 				
-				System.out.println("Repas normaux");
-				
-				for (int i = 0; i<listeRecette1.size(); i++){ // affichage dans console des repas pour debug
-					System.out.println(listeRecette1.get(i));
-				}
-				
-				System.out.println("Repas petit dej");
-				
-				for (int i = 0; i<listeRecette2.size(); i++){ // affichage dans console des petits dej pour debug
-					System.out.println(listeRecette2.get(i));
-				}
+				/*for (int i = 0; i<listeRecette1.size(); i++){ // affichage dans console des repas pour debug
+					System.out.println(listeRecette.get(i));
+				}*/
+			
 				
 			} catch (Exception ex) {ex.printStackTrace();}  // pour retrouver sources des erreurs eventuelles
 			finally{
-				try{query1.close();}
-				catch (Exception e){
-					e.printStackTrace();
-				}
-				try{query2.close();}
+				try{query.close();}
 				catch (Exception e){
 					e.printStackTrace();
 				}
@@ -106,15 +113,34 @@ public class TriDeContraintes{
 		}
 		
 		public void effacerContraintes(){ //vider les listes
-			listeRecette1.clear();
-			listeRecette2.clear();
+			listeRecettePetitDej.clear();
+			listeRecetteFrancais.clear();
+			listeRecetteItalien.clear();
+			listeRecetteAsiatique.clear();
+			listeRecetteFastFood.clear();
+			listeRecetteAutreCategorie.clear();
 		}
 		
-		public ArrayList <String> getListe1() {
-			return listeRecette1;
+		public ArrayList <String> getListePetitDej() {
+			return listeRecettePetitDej;
 		}
 		
-		public ArrayList <String> getListe2(){
-			return listeRecette2;
+		public ArrayList <String> getListeItalien(){
+			return listeRecetteItalien;
+		}
+		
+		public ArrayList <String> getListeFrancais() {
+			return listeRecetteFrancais;
+		}
+		
+		public ArrayList <String> getListeAsiatique() {
+			return listeRecetteAsiatique;
+		}
+		
+		public ArrayList <String> getListeFastFood() {
+			return listeRecetteFastFood;
+		}
+		public ArrayList <String> getListeAutreCategorie() {
+			return listeRecetteAutreCategorie;
 		}
 }
