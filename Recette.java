@@ -1,56 +1,89 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.*;
 
 public class Recette extends JFrame {
 	
-	public Recette(){
-		JPanel fond = new JPanel(new BorderLayout());
-        JLabel titre = new JLabel();
-        JTabbedPane jTabbedPane1 = new JTabbedPane();
-        JPanel francais = new JPanel();
-        JPanel italien = new JPanel();
-        JPanel asiatique = new JPanel();
-        JPanel fastfood = new JPanel();
-        JPanel petitdej = new JPanel();
-        
-       
-        //récuperer la taille de l'écran + mettre fenetre au centre de l'ecran  + fermeture
-	this.pack();
-	Dimension tailleEcran = Toolkit.getDefaultToolkit().getScreenSize();
-	int height = tailleEcran.height;
-	int width = tailleEcran.width;
-	this.setSize(width/2, height/2);
-	this.setLocationRelativeTo(null);
+	public Allergie fenAllergie;
+	private ArrayList<String> listeRecetteFrancais;
+	private ArrayList<String> listeRecettePetitDej;
+	private ArrayList<String> listeRecetteItalien;	
+	private ArrayList<String> listeRecetteAsiatique;
+	private ArrayList<String> listeRecetteFastFood;
+	private ArrayList<String> listeRecetteAutreCategorie;
+	public String nationalite;
+	private JPanel francais;
+	private JPanel italien;
+	private JPanel asiatique;
+	private JPanel fastFood;
+	private JPanel petitDej;
+	private JPanel autreCategorie;
+	
+	public Recette(){ //constructeur
+		
+		//récuperer la taille de l'écran + mettre fenetre au centre de l'ecran  + fermeture
+		this.pack();
+		Dimension tailleEcran = Toolkit.getDefaultToolkit().getScreenSize();
+		int height = tailleEcran.height;
+		int width = tailleEcran.width;
+		this.setSize(width/2, height/2);
+		this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
+        //mettre en attributs
+        JPanel fond = new JPanel(new BorderLayout());
+        JLabel titre = new JLabel("RECETTES",JLabel.CENTER);
+        JTabbedPane jTabbedPane1 = new JTabbedPane();
+        francais = new JPanel();
+		italien = new JPanel();
+        asiatique = new JPanel();
+        fastFood = new JPanel();
+        petitDej = new JPanel();
+        autreCategorie = new JPanel();
         
         fond.setBackground(new Color(204, 255, 204));
 		this.add(fond);
 
         titre.setBackground(new Color(255, 255, 255));
         titre.setFont(new Font("Stencil", 0, 48)); 
-        titre.setText("RECETTES");
+    
 		fond.add(titre, BorderLayout.NORTH);
 		
         jTabbedPane1.setBackground(new Color(255, 255, 255));
         fond.add(jTabbedPane1, BorderLayout.CENTER);
 
-        francais.setBackground(new Color(255, 255, 255));
-        
-        jTabbedPane1.addTab("Français", francais);
-         
-        italien.setBackground(new Color(255, 255, 255));
-        
-        jTabbedPane1.addTab("Italien", italien);
-        
+     
+        jTabbedPane1.addTab("Francais", francais);
+        jTabbedPane1.addTab("Italien", italien);     
         jTabbedPane1.addTab("Asiatique", asiatique);
+        jTabbedPane1.addTab("Fast-food", fastFood);
+        jTabbedPane1.addTab("Petit dejeuner", petitDej);
+        jTabbedPane1.addTab("Autres", autreCategorie);
         
-        jTabbedPane1.addTab("Fast-food", fastfood);
         
-        jTabbedPane1.addTab("Petit déjeuner", petitdej);
+        setVisible(true);
         
-         
+        
+        // lien avec BD
+        
+        listeRecetteFastFood = new ArrayList<String>();
+        listeRecetteFrancais = new ArrayList<String>();
+        listeRecetteItalien = new ArrayList<String>();
+        listeRecetteAsiatique = new ArrayList<String>();
+        listeRecetteFastFood = new ArrayList<String>();
+        listeRecetteAutreCategorie = new ArrayList<String>();
+        listeRecettePetitDej = new ArrayList<String>(); 
+		TriDeContraintes t = new TriDeContraintes(fenAllergie.regime, fenAllergie.gluten, fenAllergie.oeuf, fenAllergie.lactose, fenAllergie.arachide, fenAllergie.fodmap, nationalite); 
+		t.Tri();
+		listeRecetteFrancais = t.getListeFrancais();
+		listeRecettePetitDej = t.getListePetitDej();
+		listeRecetteItalien= t.getListeItalien();
+		listeRecetteAsiatique = t.getListeAsiatique();
+		listeRecetteFastFood = t.getListeFastFood();
+		listeRecetteAutreCategorie = t.getListeAutreCategorie();
+        
+        
 	}
 	
 	
