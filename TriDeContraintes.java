@@ -42,7 +42,7 @@ public class TriDeContraintes{
 		ResultSet query1 = null;
 		ResultSet query2 = null;
 		listeRecette1 = new ArrayList<String>();
-		listeRecette1 = new ArrayList<String>();		
+		listeRecette2 = new ArrayList<String>();		
 		
 		try{
 			Class.forName("org.mariadb.jdbc.Driver");
