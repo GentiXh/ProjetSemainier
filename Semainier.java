@@ -13,7 +13,7 @@ public class Semainier{
 		Dimension tailleEcran = Toolkit.getDefaultToolkit().getScreenSize();
 		int height = tailleEcran.height;
 		int width = tailleEcran.width;
-		frameObj.setSize(width/2, height/2);
+		frameObj.setSize(width, height);
 		frameObj.setLocationRelativeTo(null);
        		frameObj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
 		
