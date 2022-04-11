@@ -31,7 +31,6 @@ public class EcouteurAllergie implements ActionListener{
 			fenetre.revalidate();
 			fenetre.repaint(); 
 			fenetre.validerButton.setVisible(true);
-			fenetre.hide();
 		}		
 	}		
 }
