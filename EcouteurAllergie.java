@@ -13,16 +13,11 @@ public class EcouteurAllergie implements ActionListener{
 	}
 	
 	public void actionPerformed(ActionEvent evt){
-		
 		if(resultat==false){ //on a clique sur 'oui'
 			Recette f = new Recette();
-			
 			f.setVisible(true);
-			
-			//pour cacher l'ancienne fenêtre
-			fenetre.hide();
-			
-			
+			fenetre.hide(); 			//pour cacher l'ancienne fenêtre
+		
 		}else if (resultat==true){ // on a clique sur 'non'
 			fenetre.centre.remove(fenetre.yesButton);
 			fenetre.centre.remove(fenetre.noButton);
@@ -33,10 +28,10 @@ public class EcouteurAllergie implements ActionListener{
 			fenetre.fodmapBox.setVisible(true);
 			fenetre.oeufBox.setVisible(true);
 			fenetre.autresBox.setVisible(true);
-			
 			fenetre.revalidate();
 			fenetre.repaint(); 
 			fenetre.validerButton.setVisible(true);
-		}	
-	}	
+			fenetre.hide();
+		}		
+	}		
 }
