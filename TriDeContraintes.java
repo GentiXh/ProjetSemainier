@@ -13,7 +13,7 @@ public class TriDeContraintes{
 	private boolean arachide;
 	private boolean fodmap;
 	
-	private String nationalite; //TYPE et pas nationalite
+	private String type ; 
 	
 	protected ArrayList<String> listeRecettePetitDej; //repas petit dej
 	protected ArrayList<String> listeRecetteFrancais; //repas francais
@@ -23,14 +23,14 @@ public class TriDeContraintes{
 	protected ArrayList<String> listeRecetteAutreCategorie;  //repas autre categorie
 	
 	//constructeur
-	public TriDeContraintes(int regime, boolean gluten, boolean oeuf, boolean lactose, boolean arachide, boolean fodmap, String nationalite){
+	public TriDeContraintes(int regime, boolean gluten, boolean oeuf, boolean lactose, boolean arachide, boolean fodmap, String type){
 		this.regime = regime;
 		this.gluten = gluten;
 		this.oeuf = oeuf;
 		this.lactose = lactose;
 		this.arachide = arachide;
 		this.fodmap = fodmap;
-		this.nationalite = nationalite; 
+		this.type = type; 
 	}
 	
 	public void Tri(){
@@ -53,13 +53,13 @@ public class TriDeContraintes{
 				statement = conDB.createStatement();
 				
 				//requetes SQL
-				query = statement.executeQuery("Select r.nomRecette from recettes r, ingredients i, compo c where r.idRecette = c.idRecette AND i.idIngredient = c.idIngredient AND i.regime="+regime+" AND i.gluten="+gluten+" AND i.oeuf="+oeuf+" AND i.lactose="+lactose+" AND i.arachide="+arachide+" AND i.fodmap="+fodmap+" AND r.nationalite='"+nationalite+"' AND r.matin=false");
+				query = statement.executeQuery("Select r.nomRecette from recettes r, ingredients i, compo c where r.idRecette = c.idRecette AND i.idIngredient = c.idIngredient AND i.regime="+regime+" AND i.gluten="+gluten+" AND i.oeuf="+oeuf+" AND i.lactose="+lactose+" AND i.arachide="+arachide+" AND i.fodmap="+fodmap+" AND r.type='"+type+"' AND r.matin=false");
 				//pour recettes diff de petits dejeuners
 				while(query.next()){
 					
 					if (!listeRecettePetitDej.contains(query.getString("r.nomRecette")) && !listeRecetteFrancais.contains(query.getString("r.nomRecette")) && !listeRecetteItalien.contains(query.getString("r.nomRecette")) && !listeRecetteAsiatique.contains(query.getString("r.nomRecette")) && !listeRecetteFastFood.contains(query.getString("r.nomRecette")) && !listeRecetteAutreCategorie.contains(query.getString("r.nomRecette"))){  // pour eviter doublons
 						
-						switch(query.getString("r.nationalite")){
+						switch(query.getString("r.type")){
 							
 							case "petitDej":
 								listeRecettePetitDej.add(query.getString("r.nomRecette"));
