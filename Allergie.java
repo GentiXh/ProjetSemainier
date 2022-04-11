@@ -21,6 +21,8 @@ public class Allergie extends JFrame{
 		public boolean fodmap;
 		public boolean oeuf;
 		public boolean autres;
+		public int regime;
+		
 
 		
 	public Allergie(){
@@ -36,11 +38,11 @@ public class Allergie extends JFrame{
 		JPanel fond = new JPanel(new BorderLayout()); 
 		centre = new JPanel(new GridBagLayout()); 
 		glutenBox = new JCheckBox("Gluten");
-        	lactoseBox = new JCheckBox("Lactose");
-        	arachideBox = new JCheckBox("Arachide");
-        	fodmapBox = new JCheckBox("Fodmap");
-        	oeufBox = new JCheckBox("Oeuf");
-        	autresBox = new JCheckBox("Autres");
+        lactoseBox = new JCheckBox("Lactose");
+        arachideBox = new JCheckBox("Arachide");
+        fodmapBox = new JCheckBox("Fodmap");
+        oeufBox = new JCheckBox("Oeuf");
+        autresBox = new JCheckBox("Autres");
         
 		//récuperer la taille de l'écran + mettre fenetre au centre de l'ecran  + fermeture
 		this.pack();
@@ -49,8 +51,16 @@ public class Allergie extends JFrame{
 		int width = tailleEcran.width;
 		this.setSize(width/2, height/2);
 		this.setLocationRelativeTo(null);
-        	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		// par defaut l'utilisateur n'a pas d'allergies (boolean =false)
+		gluten = false;
+		lactose = false;
+		arachide = false;
+		fodmap = false;
+		oeuf = false;
+		autres = false;
+	
 		fond.setBackground(new Color(204, 204, 255));
 		this.add(fond);
 		
@@ -120,13 +130,11 @@ public class Allergie extends JFrame{
 		oeufBox.addActionListener(new EcouteurAllergie2(this,5));
 		autresBox.addActionListener(new EcouteurAllergie2(this,6));
 
-		// par defaut l'utilisateur n'a pas d'allergies (boolean =false)
-		gluten = false;
-		lactose = false;
-		arachide = false;
-		fodmap = false;
-		oeuf = false;
-		autres = false;
+		
+		
+		//getters
+		
+		
 		
 		this.setVisible(true);
     }
