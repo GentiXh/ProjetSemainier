@@ -1,10 +1,11 @@
-import java.awt.event.*;
+mport java.awt.event.*;
 import java.util.*;
 
 public class EcouteurRegime implements ActionListener{
 	
 	private RegimeAlimentaire fenetre;
 	private int reg;
+	
 	//constructeur
 	public EcouteurRegime(RegimeAlimentaire fen, int val){
 		fenetre=fen;
@@ -21,8 +22,16 @@ public class EcouteurRegime implements ActionListener{
         
         //instancie le regime :
         fenetre.setRegime(reg);
+         if (reg == 0){
+			fenetre.regime =0;
+		}
+		if (reg == 1){
+			fenetre.regime=1;
+		}
+		if (reg == 2){
+			fenetre.regime=2;
+		}
     }
     
    
 }
-
