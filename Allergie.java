@@ -21,7 +21,6 @@ public class Allergie extends JFrame{
 		public boolean fodmap;
 		public boolean oeuf;
 		public boolean autres;
-		public int regime;
 		
 
 		
