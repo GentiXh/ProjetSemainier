@@ -1,4 +1,4 @@
-mport java.awt.event.*;
+import java.awt.event.*;
 import java.util.*;
 
 public class EcouteurRegime implements ActionListener{
