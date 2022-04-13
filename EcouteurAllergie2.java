@@ -4,6 +4,12 @@ import java.util.*;
 public class EcouteurAllergie2 implements ActionListener{
 	
 	private Allergie fenetre;
+	private int n1=2;
+	private int n2=2;
+	private int n3=2;
+	private int n4=2;
+	private int n5=2;
+	
 	int allergene;
 		
 	//constructeur
@@ -14,21 +20,54 @@ public class EcouteurAllergie2 implements ActionListener{
 	
 	public void actionPerformed(ActionEvent evt) {
         if (allergene == 1){
-			fenetre.gluten=true;
+			
+			if (n1%2==0){
+				fenetre.setGluten(false);
+			}
+			else {
+				fenetre.setGluten(true);
+			}
+			n1++;
 		}
 		if (allergene == 2){
-			fenetre.lactose=true;
+			if (n2%2==0){
+				fenetre.setLactose(false);
+			}
+			else {
+				fenetre.setLactose(true);
+			}
+			n2++;
 		}
 		if (allergene == 3){
-			fenetre.arachide=true;
+			if (n3%2==0){
+				fenetre.setArachide(false);
+			}
+			else {
+				fenetre.setArachide(true);
+			}			
+			n3++;
+
 		}
+			
 		if (allergene == 4){
-			fenetre.fodmap=true;
-		}
-		if (allergene == 5){
-			fenetre.oeuf=true;
+			if (n4%2==0){
+				fenetre.setFodmap(false);
+			}
+			else {
+				fenetre.setFodmap(true);
+			}			
+			n4++;
 		}
 		
+		if (allergene == 5){
+			if (n5%2==0){
+				fenetre.setOeuf(false);
+			}
+			else {
+				fenetre.setOeuf(true);
+			}			
+			n5++;
+		}
 		
 		
 		
