@@ -81,10 +81,14 @@ public class Recette extends JFrame {
 		t.Tri();
 		listeRecetteFrancais = t.getListeFrancais();
 		listeRecettePetitDej = t.getListePetitDej();
-		listeRecetteItalien= t.getListeItalien();
+		listeRecetteItalien= t.listeRecetteItalien;
 		listeRecetteAsiatique = t.getListeAsiatique();
 		listeRecetteFastFood = t.getListeFastFood();
 		listeRecetteAutreCategorie = t.getListeAutreCategorie();
+        
+       	for (int i = 0; i<listeRecetteItalien.size(); i++){ // affichage dans console des repas pour debug
+			System.out.println(listeRecetteItalien.get(i));
+		}
         
         // faire les checkbox dans chaque "sous fenetre" (cad type)
         
