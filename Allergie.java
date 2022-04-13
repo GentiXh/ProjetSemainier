@@ -126,4 +126,20 @@ public class Allergie extends JFrame{
 		
 		this.setVisible(true);
     }
+	
+	 public void setGluten(boolean g){
+			gluten = g;
+		}
+	    public void setLactose(boolean l){
+			lactose = l;
+		}
+	    public void setOeuf(boolean o){
+			oeuf = o;
+		}
+	    public void setArachide(boolean a){
+			arachide = a;
+		}
+	    public void setFodmap(boolean f){
+			fodmap = f;
+		}
    }
