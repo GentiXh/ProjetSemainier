@@ -15,18 +15,20 @@ public class Allergie extends JFrame{
 		public JCheckBox oeufBox;
 		public JCheckBox autresBox;
 		public JLabel allergieTexte;
+		// allergene true => pas d'allergique, donc peut en manger
+		// allergene false => allergique, doit manger seulement recettes qui n'en contiennent PAS
 		public boolean gluten;
 		public boolean lactose;
 		public boolean arachide;
 		public boolean fodmap;
 		public boolean oeuf;
-		public boolean autres;
+		public int regime;
 		
 
 		
 	public Allergie(){
 		
-		super("allergies");
+		super("Allergies");
 		
 		//pour le depart
 		JLabel titre = new JLabel("ALLERGIES",JLabel.CENTER);
@@ -41,7 +43,6 @@ public class Allergie extends JFrame{
         arachideBox = new JCheckBox("Arachide");
         fodmapBox = new JCheckBox("Fodmap");
         oeufBox = new JCheckBox("Oeuf");
-        autresBox = new JCheckBox("Autres");
         
 		//récuperer la taille de l'écran + mettre fenetre au centre de l'ecran  + fermeture
 		this.pack();
@@ -52,13 +53,12 @@ public class Allergie extends JFrame{
 		this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		// par defaut l'utilisateur n'a pas d'allergies (boolean =false)
-		gluten = false;
-		lactose = false;
-		arachide = false;
-		fodmap = false;
-		oeuf = false;
-		autres = false;
+		// par defaut l'utilisateur n'a pas d'allergies (boolean =true)
+		gluten = true;
+		lactose = true;
+		arachide = true;
+		fodmap = true;
+		oeuf = true;
 	
 		fond.setBackground(new Color(204, 204, 255));
 		this.add(fond);
@@ -100,7 +100,6 @@ public class Allergie extends JFrame{
 		centre.add(arachideBox);
 		centre.add(fodmapBox);
 		centre.add(oeufBox);
-		centre.add(autresBox);
 	
 		glutenBox.setFont(new java.awt.Font("Stencil", 0, 20));
 		glutenBox.setBackground(new Color(204, 204, 255));
@@ -112,28 +111,18 @@ public class Allergie extends JFrame{
 		oeufBox.setBackground(new Color(204, 204, 255));
 		fodmapBox.setFont(new java.awt.Font("Stencil", 0, 20));
 		fodmapBox.setBackground(new Color(204, 204, 255));
-		autresBox.setFont(new java.awt.Font("Stencil", 0, 20));
-		autresBox.setBackground(new Color(204, 204, 255));
 	
 		glutenBox.setVisible(false);
 		lactoseBox.setVisible(false);
 		arachideBox.setVisible(false);
 		fodmapBox.setVisible(false);
 		oeufBox.setVisible(false);
-		autresBox.setVisible(false);
 		
 		glutenBox.addActionListener(new EcouteurAllergie2(this,1));
 		lactoseBox.addActionListener(new EcouteurAllergie2(this,2));
 		arachideBox.addActionListener(new EcouteurAllergie2(this,3));
 		fodmapBox.addActionListener(new EcouteurAllergie2(this,4));
 		oeufBox.addActionListener(new EcouteurAllergie2(this,5));
-		autresBox.addActionListener(new EcouteurAllergie2(this,6));
-
-		
-		
-		//getters
-		
-		
 		
 		this.setVisible(true);
     }
