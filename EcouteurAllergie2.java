@@ -28,9 +28,7 @@ public class EcouteurAllergie2 implements ActionListener{
 		if (allergene == 5){
 			fenetre.oeuf=true;
 		}
-		if (allergene == 6){
-			fenetre.autres=true;
-		}
+		
 		
 		
 		
