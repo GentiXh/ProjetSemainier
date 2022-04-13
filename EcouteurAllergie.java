@@ -27,7 +27,6 @@ public class EcouteurAllergie implements ActionListener{
 			fenetre.arachideBox.setVisible(true);
 			fenetre.fodmapBox.setVisible(true);
 			fenetre.oeufBox.setVisible(true);
-			fenetre.autresBox.setVisible(true);
 			fenetre.revalidate();
 			fenetre.repaint(); 
 			fenetre.validerButton.setVisible(true);
