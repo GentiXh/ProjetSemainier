@@ -15,21 +15,14 @@ public class Allergie extends JFrame{
 		public JCheckBox oeufBox;
 		public JCheckBox autresBox;
 		public JLabel allergieTexte;
-		// allergene true => pas d'allergique, donc peut en manger
-		// allergene false => allergique, doit manger seulement recettes qui n'en contiennent PAS
-		public boolean gluten;
-		public boolean lactose;
-		public boolean arachide;
-		public boolean fodmap;
-		public boolean oeuf;
-		public int regime;
 		
-
 		
-	public Allergie(){
+	public Allergie(ProfilUtilisateur profil){
 		
 		super("Allergies");
 		
+		System.out.println("on passe par allergie");
+
 		//pour le depart
 		JLabel titre = new JLabel("ALLERGIES",JLabel.CENTER);
 		allergieTexte = new JLabel("Allergie :");
@@ -53,13 +46,12 @@ public class Allergie extends JFrame{
 		this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		// par defaut l'utilisateur n'a pas d'allergies (boolean =true)
-		gluten = true;
-		lactose = true;
-		arachide = true;
-		fodmap = true;
-		oeuf = true;
-	
+		profil.setGluten(true);
+		profil.setLactose(true);
+		profil.setArachide(true);
+		profil.setFodmap(true);
+		profil.setOeuf(true);
+		
 		fond.setBackground(new Color(204, 204, 255));
 		this.add(fond);
 		
@@ -77,20 +69,20 @@ public class Allergie extends JFrame{
 		yesButton.setBackground(new Color(0, 0, 0));
 		yesButton.setFont(new Font("Stencil", 0, 24));
 		yesButton.setForeground(new Color(204, 204, 255));
-		yesButton.addActionListener(new EcouteurAllergie(this,true));
+		yesButton.addActionListener(new EcouteurAllergie(this,true, profil));
 		centre.add(yesButton);
 
 		noButton.setBackground(new java.awt.Color(0, 0, 0));
 		noButton.setFont(new java.awt.Font("Stencil", 0, 24));
 		noButton.setForeground(new java.awt.Color(204, 204, 255));
-		noButton.addActionListener(new EcouteurAllergie(this, false));
+		noButton.addActionListener(new EcouteurAllergie(this, false, profil));
 		centre.add(noButton);
 
 		validerButton.setBackground(new Color(0, 0, 0));
 		validerButton.setFont(new Font("Stencil", 0, 24));
 		validerButton.setForeground(new Color(204, 204, 255));
 		fond.add(validerButton, BorderLayout.SOUTH);
-		validerButton.addActionListener(new EcouteurValiderAllergie(this));
+		validerButton.addActionListener(new EcouteurValiderAllergie(this,profil));
 		validerButton.setVisible(false); 
 			
 		// deuxieme partie
@@ -118,28 +110,14 @@ public class Allergie extends JFrame{
 		fodmapBox.setVisible(false);
 		oeufBox.setVisible(false);
 		
-		glutenBox.addActionListener(new EcouteurAllergie2(this,1));
-		lactoseBox.addActionListener(new EcouteurAllergie2(this,2));
-		arachideBox.addActionListener(new EcouteurAllergie2(this,3));
-		fodmapBox.addActionListener(new EcouteurAllergie2(this,4));
-		oeufBox.addActionListener(new EcouteurAllergie2(this,5));
+		glutenBox.addActionListener(new EcouteurAllergie2(this,1,profil));
+		lactoseBox.addActionListener(new EcouteurAllergie2(this,2,profil));
+		arachideBox.addActionListener(new EcouteurAllergie2(this,3,profil));
+		fodmapBox.addActionListener(new EcouteurAllergie2(this,4,profil));
+		oeufBox.addActionListener(new EcouteurAllergie2(this,5,profil));
 		
+
 		this.setVisible(true);
     }
-	
-	 public void setGluten(boolean g){
-			gluten = g;
-		}
-	    public void setLactose(boolean l){
-			lactose = l;
-		}
-	    public void setOeuf(boolean o){
-			oeuf = o;
-		}
-	    public void setArachide(boolean a){
-			arachide = a;
-		}
-	    public void setFodmap(boolean f){
-			fodmap = f;
-		}
-   }
+    
+}
