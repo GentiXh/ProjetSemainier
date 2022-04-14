@@ -20,12 +20,13 @@ public class Recette extends JFrame {
 	private JPanel fastFood;
 	private JPanel petitDej;
 	private JPanel autreCategorie;
-	//public JButton  
 	
 	
 	
-	public Recette(){ //constructeur
+	public Recette(ProfilUtilisateur profil){ //constructeur
 		
+		System.out.println("on passe par recette");
+
 		//récuperer la taille de l'écran + mettre fenetre au centre de l'ecran  + fermeture
 		this.pack();
 		Dimension tailleEcran = Toolkit.getDefaultToolkit().getScreenSize();
@@ -45,7 +46,7 @@ public class Recette extends JFrame {
         fastFood = new JPanel();
         petitDej = new JPanel();
         autreCategorie = new JPanel();
-        fenAllergie= new Allergie();
+        //fenAllergie= new Allergie();
         fenRegime = new RegimeAlimentaire();
         
         fond.setBackground(new Color(204, 255, 204));
@@ -67,9 +68,7 @@ public class Recette extends JFrame {
         jTabbedPane1.addTab("Autres", autreCategorie);
         
         setVisible(true);
-        
         // lien avec BD
-        
         listeRecetteFastFood = new ArrayList<String>();
         listeRecetteFrancais = new ArrayList<String>();
         listeRecetteItalien = new ArrayList<String>();
@@ -77,7 +76,7 @@ public class Recette extends JFrame {
         listeRecetteFastFood = new ArrayList<String>();
         listeRecetteAutreCategorie = new ArrayList<String>();
         listeRecettePetitDej = new ArrayList<String>(); 
-		TriDeContraintes t = new TriDeContraintes(fenRegime.regime, fenAllergie.gluten, fenAllergie.oeuf, fenAllergie.lactose, fenAllergie.arachide, fenAllergie.fodmap); 
+		TriDeContraintes t = new TriDeContraintes(profil); 
 		t.Tri();
 		listeRecetteFrancais = t.getListeFrancais();
 		listeRecettePetitDej = t.getListePetitDej();
@@ -85,16 +84,19 @@ public class Recette extends JFrame {
 		listeRecetteAsiatique = t.getListeAsiatique();
 		listeRecetteFastFood = t.getListeFastFood();
 		listeRecetteAutreCategorie = t.getListeAutreCategorie();
+		System.out.println(" gluten recette "+profil.gluten);
+		System.out.println(" regime recette "+profil.regime);
+
         
        	for (int i = 0; i<listeRecetteItalien.size(); i++){ // affichage dans console des repas pour debug
 			System.out.println(listeRecetteItalien.get(i));
 		}
         
         // faire les checkbox dans chaque "sous fenetre" (cad type)
-        
-        
-        
-        
+        //fenRegime.regime, fenAllergie.gluten, fenAllergie.oeuf, fenAllergie.lactose, fenAllergie.arachide, fenAllergie.fodmap
+
+	
+	
 	}
 	
 	
