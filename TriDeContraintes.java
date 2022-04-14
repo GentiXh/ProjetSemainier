@@ -32,14 +32,14 @@ public class TriDeContraintes{
 	public ArrayList<String> listeRecetteAutreCategorie;  //repas autre categorie
 	
 	//constructeur
-	public TriDeContraintes(int regime, boolean gluten, boolean oeuf, boolean lactose, boolean arachide, boolean fodmap){
+	public TriDeContraintes(ProfilUtilisateur p){
 		
-		this.regime = regime;
-		this.gluten = gluten;
-		this.oeuf = oeuf;
-		this.lactose = lactose;
-		this.arachide = arachide;
-		this.fodmap = fodmap; 
+		this.regime = p.regime;
+		this.gluten = p.gluten;
+		this.oeuf = p.oeuf;
+		this.lactose = p.lactose;
+		this.arachide = p.arachide;
+		this.fodmap = p.fodmap; 
 		
 		Regime = "i.regime = "+regime;									//si vegan, cherche que les recettes veganes
 		if (regime == 0){												//si omnivore
@@ -149,8 +149,8 @@ public class TriDeContraintes{
 				}
 				for (int i = 0; i<listeRecetteAutreCategorie.size(); i++){ // affichage dans console des repas pour debug
 					System.out.println(listeRecetteAutreCategorie.get(i));
-				}*/
-			
+				}
+			*/
 				
 			} catch (Exception ex) {ex.printStackTrace();}  // pour retrouver sources des erreurs eventuelles
 			finally{
