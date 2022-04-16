@@ -4,26 +4,27 @@ import java.awt.event.*;
 
 public class Allergie extends JFrame{
 	
-		public JButton	validerButton;
-		public JPanel centre;
-		public JButton noButton;
-		public JButton yesButton;
-		public JCheckBox glutenBox;
-		public JCheckBox lactoseBox;
-		public JCheckBox arachideBox;
-		public JCheckBox fodmapBox;
-		public JCheckBox oeufBox;
-		public JCheckBox autresBox;
-		public JLabel allergieTexte;
+	//attributs
+	public JButton validerButton;
+	public JPanel centre;
+	public JButton noButton;
+	public JButton yesButton;
+	public JCheckBox glutenBox;
+	public JCheckBox lactoseBox;
+	public JCheckBox arachideBox;
+	public JCheckBox fodmapBox;
+	public JCheckBox oeufBox;
+	public JCheckBox autresBox;
+	public JLabel allergieTexte;
 		
-		
+	//constructeur	
 	public Allergie(ProfilUtilisateur profil){
 		
 		super("Allergies");
 		
-		System.out.println("on passe par allergie");
+		/**System.out.println("on passe par allergie");*/
 
-		//pour le depart
+		//on initialise tous les elements graphiques (boutons, labels, checkbox etc)
 		JLabel titre = new JLabel("ALLERGIES",JLabel.CENTER);
 		allergieTexte = new JLabel("Allergie :");
 		yesButton = new JButton("Oui");
@@ -46,15 +47,19 @@ public class Allergie extends JFrame{
 		this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		profil.setGluten(true);
-		profil.setLactose(true);
-		profil.setArachide(true);
-		profil.setFodmap(true);
-		profil.setOeuf(true);
+		//par defaut l'utilisateur n'a pas d'allergie donc les boolean allergenes sont tous 'false'
+		//ces valeurs sont gardees telles quelles si l'utilisateur appuie sur "Non" a "Allergie: "
+		profil.setGluten(false);
+		profil.setLactose(false);
+		profil.setArachide(false);
+		profil.setFodmap(false);
+		profil.setOeuf(false);
 		
+		//mise en couleur du fond
 		fond.setBackground(new Color(204, 204, 255));
 		this.add(fond);
 		
+		//mise en forme + affichage + ajout des elements graphiques de base
 		fond.add(centre, BorderLayout.CENTER);
 		centre.setBackground(new Color(204, 204, 255));
 		
@@ -66,6 +71,7 @@ public class Allergie extends JFrame{
 		allergieTexte.setBackground(new Color(204, 204, 255));
 		centre.add(allergieTexte);
 		
+		//creation des boutons 'oui' et 'non' d'allergies + mise en forme + ajout +affichage + lien avec leur ecouteur
 		yesButton.setBackground(new Color(0, 0, 0));
 		yesButton.setFont(new Font("Stencil", 0, 24));
 		yesButton.setForeground(new Color(204, 204, 255));
@@ -77,7 +83,8 @@ public class Allergie extends JFrame{
 		noButton.setForeground(new java.awt.Color(204, 204, 255));
 		noButton.addActionListener(new EcouteurAllergie(this, false, profil));
 		centre.add(noButton);
-
+		
+		//creation + mise en forme + ajout  bouton pour valider choix allergies qui n'est pas affiche au depart
 		validerButton.setBackground(new Color(0, 0, 0));
 		validerButton.setFont(new Font("Stencil", 0, 24));
 		validerButton.setForeground(new Color(204, 204, 255));
@@ -85,8 +92,7 @@ public class Allergie extends JFrame{
 		validerButton.addActionListener(new EcouteurValiderAllergie(this,profil));
 		validerButton.setVisible(false); 
 			
-		// deuxieme partie
-				
+		// ajout + mise en forme des checkbox qui ne sont pas affichees au depart			
 		centre.add(glutenBox);
 		centre.add(lactoseBox);
 		centre.add(arachideBox);
@@ -110,13 +116,15 @@ public class Allergie extends JFrame{
 		fodmapBox.setVisible(false);
 		oeufBox.setVisible(false);
 		
-		glutenBox.addActionListener(new EcouteurAllergie2(this,1,profil));
-		lactoseBox.addActionListener(new EcouteurAllergie2(this,2,profil));
-		arachideBox.addActionListener(new EcouteurAllergie2(this,3,profil));
-		fodmapBox.addActionListener(new EcouteurAllergie2(this,4,profil));
-		oeufBox.addActionListener(new EcouteurAllergie2(this,5,profil));
+		//lien entre les checkbox et l'ecouteur pour choix d'allergene
+		/* les numeros permettent de distinguer quelle case est cochee dans l'ecouteur*/
+		glutenBox.addActionListener(new EcouteurAllergie2(this, 1, profil));
+		lactoseBox.addActionListener(new EcouteurAllergie2(this, 2, profil));
+		arachideBox.addActionListener(new EcouteurAllergie2(this, 3, profil));
+		fodmapBox.addActionListener(new EcouteurAllergie2(this, 4, profil));
+		oeufBox.addActionListener(new EcouteurAllergie2(this, 5, profil));
 		
-
+		//affichage de la fenetre
 		this.setVisible(true);
     }
     
