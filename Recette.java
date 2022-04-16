@@ -71,7 +71,7 @@ public class Recette extends JFrame {
         System.out.print("\nRecettes Petit dejeuner: ");
 		for (int i = 0; i<t.getPetitDejList().size(); i++){ // affichage dans console des repas pour debug
 			if (i==t.getPetitDejList().size()-1){
-				System.out.println(t.getPetitDejList().get(i));
+				System.out.print(t.getPetitDejList().get(i));
 			}
 			else{
 				System.out.print(t.getPetitDejList().get(i)+", ");
@@ -81,7 +81,7 @@ public class Recette extends JFrame {
 		System.out.print("\nRecettes Francaises: ");
 		for (int i = 0; i<t.getFrancaisList().size(); i++){ // affichage dans console des repas pour debug
 			if (i==t.getFrancaisList().size()-1){
-				System.out.println(t.getFrancaisList().get(i));
+				System.out.print(t.getFrancaisList().get(i));
 			}
 			else{
 				System.out.print(t.getFrancaisList().get(i)+", ");
@@ -91,7 +91,7 @@ public class Recette extends JFrame {
 		System.out.print("\nRecettes Italiennes: ");
 		for (int i = 0; i<t.getItalienList().size(); i++){ // affichage dans console des repas pour debug
 			if (i==t.getItalienList().size()-1){
-				System.out.println(t.getItalienList().get(i));
+				System.out.print(t.getItalienList().get(i));
 			}
 			else{
 				System.out.print(t.getItalienList().get(i)+", ");
@@ -101,7 +101,7 @@ public class Recette extends JFrame {
 		System.out.print("\nRecettes Asiatiques: ");
 		for (int i = 0; i<t.getAsiatiqueList().size(); i++){ // affichage dans console des repas pour debug
 			if (i==t.getAsiatiqueList().size()-1){
-				System.out.println(t.getAsiatiqueList().get(i));
+				System.out.print(t.getAsiatiqueList().get(i));
 			}
 			else{
 				System.out.print(t.getAsiatiqueList().get(i)+", ");
@@ -111,7 +111,7 @@ public class Recette extends JFrame {
 		System.out.print("\nRecettes Fast-Food: ");
 		for (int i = 0; i<t.getFastFoodList().size(); i++){ // affichage dans console des repas pour debug
 			if (i==t.getFastFoodList().size()-1){
-				System.out.println(t.getFastFoodList().get(i));
+				System.out.print(t.getFastFoodList().get(i));
 			}
 			else{
 				System.out.print(t.getFastFoodList().get(i)+", ");
@@ -121,7 +121,7 @@ public class Recette extends JFrame {
 		System.out.print("\nRecettes Autres categories: ");
 		for (int i = 0; i<t.getAutreCategorieList().size(); i++){ // affichage dans console des repas pour debug
 			if (i==t.getAutreCategorieList().size()-1){
-				System.out.println(t.getAutreCategorieList().get(i));
+				System.out.print(t.getAutreCategorieList().get(i));
 			}
 			else{
 				System.out.print(t.getAutreCategorieList().get(i)+", ");
