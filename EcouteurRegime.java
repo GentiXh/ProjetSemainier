@@ -3,12 +3,13 @@ import java.util.*;
 
 public class EcouteurRegime implements ActionListener{
 	
-	private RegimeAlimentaire fenetreRegime;
-	private int reg;
-	public ProfilUtilisateur profil;
+	//attributs
+	private RegimeAlimentaire fenetreRegime; //fenetre sur laquelle intervient cet ecouteur
+	private int reg;						 // cet ecuteur a pour but d'instancier la valeur de regime en tant que 'reg'
+	public ProfilUtilisateur profil;		
 	
 	//constructeur
-	public EcouteurRegime(RegimeAlimentaire fen, int val, ProfilUtilisateur p){
+	public EcouteurRegime(RegimeAlimentaire fen, int val, ProfilUtilisateur p){ // mettre le profil en parametre permet de conserver les informations de l'utilisateur 
 		fenetreRegime=fen;
 		reg=val;
 		profil = p;
@@ -24,9 +25,8 @@ public class EcouteurRegime implements ActionListener{
         fenetreAllergie.setVisible(true);
         
         //pour cacher l'ancienne fenêtre
-        
-		System.out.println("on est passe par ecouteur regime");		
+		/**System.out.println("on est passe par ecouteur regime");*/
 		fenetreRegime.dispose();
-		System.out.println("regime alimentaire se ferme");
+		/**System.out.println("regime alimentaire se ferme");*/
     }
 }
