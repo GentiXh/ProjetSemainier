@@ -3,7 +3,7 @@ import java.util.*;
 
 public class EcouteurValiderAllergie implements ActionListener{
 	
-	private Allergie fenetre;
+	private Allergie fenetre;            //fenetre sur laquelle intervient cet ecouteur
 	private ProfilUtilisateur profil;
 		
 	//constructeur
@@ -13,11 +13,12 @@ public class EcouteurValiderAllergie implements ActionListener{
 	}
 	
 	public void actionPerformed(ActionEvent evt) {
+        //creation + affichage d'une nouvelle fenetre recette
         Recette recette = new Recette(profil);
 		recette.setVisible(true);
-		//pour cacher l'ancienne fenêtre
+		//pour cacher l'ancienne fenêtre(allergie)
 		fenetre.dispose();
-		System.out.println("on est passe par ecouteur valider");
+		/**System.out.println("on est passe par ecouteur valider");*/
     }
 }
-//// INUTILE
+
