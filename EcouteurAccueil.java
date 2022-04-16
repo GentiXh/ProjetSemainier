@@ -10,11 +10,12 @@ public class EcouteurAccueil implements ActionListener{
 		fenetre=fen;
 	}
 	
-	private void buttonGOActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+	private void buttonGOActionPerformed(ActionEvent evt) {                                         
+        System.out.println("on passe par ecouteur go");
+
         RegimeAlimentaire f = new RegimeAlimentaire();
         f.setVisible(true);
-        
+
         //pour cacher l'ancienne fenêtre
         fenetre.hide();
     }
@@ -22,7 +23,7 @@ public class EcouteurAccueil implements ActionListener{
 	public void actionPerformed(ActionEvent e){
 		buttonGOActionPerformed(e);
     }
-		
+
 		
 		
 }
