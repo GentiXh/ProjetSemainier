@@ -61,6 +61,6 @@ public class Case extends JPanel{
 		recette.add(caseDiner);
 		
 		//ajout du panel recette dans ma case
-		this.add(recette,BorderLayout.CENTER);
+		this.add(recette,BorderLayout.CENTER); 
 	}
 }  
