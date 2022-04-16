@@ -9,71 +9,80 @@ public class EcouteurAllergie2 implements ActionListener{
 	private int n3=2;
 	private int n4=2;
 	private int n5=2;
-	
+	/**private boolean g;
+	private boolean l;
+	private boolean a;
+	private boolean f;
+	private boolean o;*/
 	int allergene;
-		
+	private ProfilUtilisateur profil;
+	
+	
 	//constructeur
-	public EcouteurAllergie2(Allergie fen, int val){
+	public EcouteurAllergie2(Allergie fen, int val, ProfilUtilisateur p){
 		fenetre=fen;
 		allergene = val;
+		profil =p;
 	}
 	
 	public void actionPerformed(ActionEvent evt) {
-        if (allergene == 1){
-			
+        if (allergene == 1){				//gluten
 			if (n1%2==0){
-				fenetre.setGluten(false);
+				profil.setGluten(false);
 			}
 			else {
-				fenetre.setGluten(true);
+				profil.setGluten(true);
 			}
+			System.out.println(" gluten ecouteur "+profil.gluten);
 			n1++;
 		}
-		if (allergene == 2){
+		if (allergene == 2){				//lactose
 			if (n2%2==0){
-				fenetre.setLactose(false);
+				profil.setLactose(false);
 			}
 			else {
-				fenetre.setLactose(true);
+				profil.setLactose(true);
 			}
 			n2++;
 		}
-		if (allergene == 3){
+		if (allergene == 3){				//arachide
 			if (n3%2==0){
-				fenetre.setArachide(false);
+				profil.setArachide(false);
 			}
 			else {
-				fenetre.setArachide(true);
+				profil.setArachide(true);
 			}			
 			n3++;
 
 		}
 			
-		if (allergene == 4){
+		if (allergene == 4){				//fodmap
 			if (n4%2==0){
-				fenetre.setFodmap(false);
+				profil.setFodmap(false);
 			}
 			else {
-				fenetre.setFodmap(true);
+				profil.setFodmap(true);
 			}			
 			n4++;
 		}
 		
-		if (allergene == 5){
+		if (allergene == 5){				//oeuf
 			if (n5%2==0){
-				fenetre.setOeuf(false);
+				profil.setOeuf(false);
 			}
 			else {
-				fenetre.setOeuf(true);
+				profil.setOeuf(true);
 			}			
 			n5++;
 		}
+		System.out.println("on est passe par ecouteur allergie2");
 		
-		
-		
+		if (allergene ==-1){
+		Recette recette = new Recette(profil);
+		recette.setVisible(true);
+		//pour cacher l'ancienne fenêtre
+		fenetre.dispose();
+		}
+		System.out.println("on est passe par ecouteur valider");
     }
-  
-    
-		
-		
 }
