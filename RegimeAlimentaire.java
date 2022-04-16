@@ -3,7 +3,6 @@ import javax.swing.*;
 import java.util.*;
 import java.awt.event.*;
 
-
 public class RegimeAlimentaire extends JFrame{
 	
 	//attributs
