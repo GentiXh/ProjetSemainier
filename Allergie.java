@@ -127,5 +127,4 @@ public class Allergie extends JFrame{
 		//affichage de la fenetre
 		this.setVisible(true);
     }
-    
 }
