@@ -3,27 +3,21 @@ import java.util.*;
 
 public class EcouteurAccueil implements ActionListener{
 	
-	private Accueil fenetre;
+	private Accueil fenetre; //fenetre sur laquelle intervient cet ecouteur
 	
 	//constructeur
-	public EcouteurAccueil(Accueil fen){
+	public EcouteurAccueil(Accueil fen){ 
 		fenetre=fen;
 	}
 	
-	private void buttonGOActionPerformed(ActionEvent evt) {                                         
-        System.out.println("on passe par ecouteur go");
-
+	public void actionPerformed(ActionEvent evt) {                                         
+        /**System.out.println("on passe par ecouteur go");*/
+		
+		//une nouvelle fenetre regime apparait quand on clique sur go
         RegimeAlimentaire f = new RegimeAlimentaire();
         f.setVisible(true);
 
-        //pour cacher l'ancienne fenêtre
+        //pour cacher l'ancienne fenêtre (accueil)
         fenetre.hide();
-    }
-    
-	public void actionPerformed(ActionEvent e){
-		buttonGOActionPerformed(e);
-    }
-
-		
-		
+    }	
 }
