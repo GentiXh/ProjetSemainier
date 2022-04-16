@@ -1,6 +1,6 @@
 public class Lancement {
     public static void main(String[] args) {
-        new Accueil();
+        new Accueil();							//point de depart
 
     }
 }
