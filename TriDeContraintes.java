@@ -31,7 +31,7 @@ public class TriDeContraintes{
 	private ArrayList<String> listeRecetteItalien; 				//repas italien
 	private ArrayList<String> listeRecetteAsiatique;			//repas asiatique
 	private ArrayList<String> listeRecetteFastFood; 			//repas fast food
-	private ArrayList<String> listeRecetteAutreCategorie;    	//repas autre categorie
+	private ArrayList<String> listeRecetteAutreCategorie;    		//repas autre categorie
 	
 	//constructeur
 	public TriDeContraintes(ProfilUtilisateur p){
