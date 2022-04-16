@@ -3,35 +3,30 @@ import java.util.*;
 
 public class EcouteurRegime implements ActionListener{
 	
-	private RegimeAlimentaire fenetre;
+	private RegimeAlimentaire fenetreRegime;
 	private int reg;
+	public ProfilUtilisateur profil;
 	
 	//constructeur
-	public EcouteurRegime(RegimeAlimentaire fen, int val){
-		fenetre=fen;
+	public EcouteurRegime(RegimeAlimentaire fen, int val, ProfilUtilisateur p){
+		fenetreRegime=fen;
 		reg=val;
+		profil = p;
 	}
 
 	 public void actionPerformed(ActionEvent evt) {                                         
-        // ouvre une nouvelle fenetre allergie:
-        Allergie f = new Allergie();
-        f.setVisible(true);
+       
+       //on set la valeur de regime dans ProfilUtilisateur
+		profil.setReg(reg);
+        
+		// ouvre une nouvelle fenetre allergie:
+        Allergie fenetreAllergie = new Allergie(this.profil);
+        fenetreAllergie.setVisible(true);
         
         //pour cacher l'ancienne fenêtre
-        fenetre.hide();
         
-        //instancie le regime :
-        fenetre.setRegime(reg);
-         if (reg == 0){
-			fenetre.regime =0;
-		}
-		if (reg == 1){
-			fenetre.regime=1;
-		}
-		if (reg == 2){
-			fenetre.regime=2;
-		}
+		System.out.println("on est passe par ecouteur regime");		
+		fenetreRegime.dispose();
+		System.out.println("regime alimentaire se ferme");
     }
-    
-   
 }
