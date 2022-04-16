@@ -44,8 +44,8 @@ public class Semainier extends JFrame{
 		this.add(jourSamedi);  
 		this.add(jourDimanche); 
 		this.add(case8); 
-		  
+		 
+		//affichage de la fenetre 
 		this.setVisible(true); 
-  
 	}
 }  
