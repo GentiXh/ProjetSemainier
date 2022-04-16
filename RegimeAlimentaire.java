@@ -15,6 +15,9 @@ public class RegimeAlimentaire extends JFrame{
 	JButton boutonVegan;
 	int regime;
 	Box box = Box.createVerticalBox(); // permet d'aligner verticalement les jpanel
+    public ProfilUtilisateur profil;
+    
+    
     
     //Constructeur
     public RegimeAlimentaire() {
@@ -22,14 +25,15 @@ public class RegimeAlimentaire extends JFrame{
         //on definit le nom de la fenetre
         super("Regime Alimentaire");
 
-       
-	//récuperer la taille de l'écran + mettre fenetre au centre de l'ecran  + fermeture
-	this.pack();
-	Dimension tailleEcran = Toolkit.getDefaultToolkit().getScreenSize();
-	int height = tailleEcran.height;
-	int width = tailleEcran.width;
-	this.setSize(width/2, height/2);
-	this.setLocationRelativeTo(null);
+        System.out.println("on passe par regime allimentaire");
+
+		//récuperer la taille de l'écran + mettre fenetre au centre de l'ecran  + fermeture
+		this.pack();
+		Dimension tailleEcran = Toolkit.getDefaultToolkit().getScreenSize();
+		int height = tailleEcran.height;
+		int width = tailleEcran.width;
+		this.setSize(width/2, height/2);
+		this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		//création des différents éléments de la fenêtre
@@ -39,7 +43,8 @@ public class RegimeAlimentaire extends JFrame{
         boutonOmnivore = new JButton("Omnivore");
         boutonVegetarian = new JButton("Vegetarian");
         boutonVegan = new JButton("Vegan");
-	
+		
+		profil = new ProfilUtilisateur();
       
 
         fond.setBackground(new Color(255, 204, 204));
@@ -53,21 +58,17 @@ public class RegimeAlimentaire extends JFrame{
         boutonOmnivore.setBackground(new Color(0, 0, 0));
         boutonOmnivore.setFont(new Font("Stencil", 0, 36));
         boutonOmnivore.setForeground(new Color(255, 204, 204));
-        
-        //écouteur du bouton omnivore
-		boutonOmnivore.addActionListener(new EcouteurRegime(this,0));
+        boutonOmnivore.addActionListener(new EcouteurRegime(this,0, profil));
         
         boutonVegetarian.setBackground(new Color(0, 0, 0));
         boutonVegetarian.setFont(new Font("Stencil", 0, 36)); 
         boutonVegetarian.setForeground(new Color(255, 204, 204));
-        
-        //écouteur du bouton vegetarian
-        boutonVegetarian.addActionListener(new EcouteurRegime(this, 1)); 
+        boutonVegetarian.addActionListener(new EcouteurRegime(this, 1,profil)); 
 
         boutonVegan.setBackground(new Color(0, 0, 0));
         boutonVegan.setFont(new Font("Stencil", 0, 36));
         boutonVegan.setForeground(new Color(255, 204, 204));
-        boutonVegan.addActionListener(new EcouteurRegime(this, 2)); 
+        boutonVegan.addActionListener(new EcouteurRegime(this, 2,profil)); 
 				
 		this.add(fond);
 		fond.add(fond2, BorderLayout.CENTER);
@@ -79,6 +80,7 @@ public class RegimeAlimentaire extends JFrame{
        
        //Rendre la fenêtre visible
         this.setVisible(true);
+
 	}
     // met à jour le regime
     public void setRegime(int val){
