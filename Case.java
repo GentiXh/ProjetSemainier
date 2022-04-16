@@ -3,7 +3,6 @@ import javax.swing.*;
     
 public class Case extends JPanel{    
 	    
-  
 	// constructeur  
 	public Case(String jour, Color couleur){
 				
@@ -63,7 +62,5 @@ public class Case extends JPanel{
 		
 		//ajout du panel recette dans ma case
 		this.add(recette,BorderLayout.CENTER);
-		
-		 
 	}
 }  
