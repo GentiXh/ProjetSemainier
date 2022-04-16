@@ -5,16 +5,18 @@ import java.awt.event.*;
 //classe ou les preferences de l'utilisateur sont enregistrees
 
 public class ProfilUtilisateur{
-	public boolean gluten;
-	public boolean lactose;
-	public boolean arachide;
-	public boolean fodmap;
-	public boolean oeuf;
-	public int regime;
+	private boolean gluten;
+	private boolean lactose;
+	private boolean arachide;
+	private boolean fodmap;
+	private boolean oeuf;
+	private int regime;
 		
 	// allergene true => utilisateur allergique, donc code qui cherche les allergies a exclure
 	// allergene false => in contrarium
 		
+	//setteurs:
+	
 	public void setGluten(boolean g){
 		gluten = g;
 	}
@@ -32,5 +34,31 @@ public class ProfilUtilisateur{
 	}
 	public void setReg (int r){
 		regime = r;
+	}
+	
+	//Getteurs:
+	
+	public boolean getGluten(){
+		return gluten;
+	}
+
+	public boolean getLactose(){
+		return lactose;
+	}
+
+	public boolean getOeuf(){
+		return oeuf;
+	}
+
+	public boolean getArachide(){
+		return arachide;
+	}
+
+	public boolean getFodmap(){
+		return fodmap;
+	}
+	
+	public int getRegime(){
+		return regime;
 	}
 }
