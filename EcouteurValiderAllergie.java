@@ -21,4 +21,3 @@ public class EcouteurValiderAllergie implements ActionListener{
 		/**System.out.println("on est passe par ecouteur valider");*/
     }
 }
-
