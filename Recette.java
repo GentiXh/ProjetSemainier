@@ -5,23 +5,13 @@ import java.util.*;
 
 public class Recette extends JFrame {
 	
-	public Allergie fenAllergie;
-	public RegimeAlimentaire fenRegime;
-	private ArrayList<String> listeRecetteFrancais;
-	private ArrayList<String> listeRecettePetitDej;
-	private ArrayList<String> listeRecetteItalien;	
-	private ArrayList<String> listeRecetteAsiatique;
-	private ArrayList<String> listeRecetteFastFood;
-	private ArrayList<String> listeRecetteAutreCategorie;
-	public String type;
+	//Panneaux d'affichages selon le type du plat
 	private JPanel francais;
 	private JPanel italien;
 	private JPanel asiatique;
 	private JPanel fastFood;
 	private JPanel petitDej;
 	private JPanel autreCategorie;
-	
-	
 	
 	public Recette(ProfilUtilisateur profil){ //constructeur
 		
@@ -46,8 +36,6 @@ public class Recette extends JFrame {
         fastFood = new JPanel();
         petitDej = new JPanel();
         autreCategorie = new JPanel();
-        //fenAllergie= new Allergie();
-        fenRegime = new RegimeAlimentaire();
         
         fond.setBackground(new Color(204, 255, 204));
 		this.add(fond);
@@ -68,37 +56,76 @@ public class Recette extends JFrame {
         jTabbedPane1.addTab("Autres", autreCategorie);
         
         setVisible(true);
+        
         // lien avec BD
-        listeRecetteFastFood = new ArrayList<String>();
-        listeRecetteFrancais = new ArrayList<String>();
-        listeRecetteItalien = new ArrayList<String>();
-        listeRecetteAsiatique = new ArrayList<String>();
-        listeRecetteFastFood = new ArrayList<String>();
-        listeRecetteAutreCategorie = new ArrayList<String>();
-        listeRecettePetitDej = new ArrayList<String>(); 
+        
+        //creation + appel d'une instance de tri qui permet de choisir les recettes correspondantes aux choix de l'utilisateur.
+        //l'instance profil du ProfilUtilisateur passee en parametre a travers toute la chaine sequentielle des classes depuis RegimeAlimentaires jusqu'a ici, et puis finallement a TriDeContraintes
 		TriDeContraintes t = new TriDeContraintes(profil); 
-		t.Tri();
-		listeRecetteFrancais = t.getListeFrancais();
-		listeRecettePetitDej = t.getListePetitDej();
-		listeRecetteItalien= t.listeRecetteItalien;
-		listeRecetteAsiatique = t.getListeAsiatique();
-		listeRecetteFastFood = t.getListeFastFood();
-		listeRecetteAutreCategorie = t.getListeAutreCategorie();
-		System.out.println(" gluten recette "+profil.gluten);
-		System.out.println(" regime recette "+profil.regime);
+		t.Tri();											//appel la methode qui fait le tri selon les choix de l'utilisateur pour tout "type" de recette
+		
+		//codes qui affichent le regime et la valeur du gluten sur la console depuis cette classe. A utiliser si besoin de debug
+		/**System.out.println(" gluten recette "+profil.gluten);*/
+		/**System.out.println(" regime recette "+profil.regime);*/
 
-        
-       	for (int i = 0; i<listeRecetteItalien.size(); i++){ // affichage dans console des repas pour debug
-			System.out.println(listeRecetteItalien.get(i));
+        System.out.print("\nRecettes Petit dejeuner: ");
+		for (int i = 0; i<t.getPetitDejList().size(); i++){ // affichage dans console des repas pour debug
+			if (i==t.getPetitDejList().size()-1){
+				System.out.println(t.getPetitDejList().get(i));
+			}
+			else{
+				System.out.print(t.getPetitDejList().get(i)+", ");
+			}
 		}
-        
-        // faire les checkbox dans chaque "sous fenetre" (cad type)
-        //fenRegime.regime, fenAllergie.gluten, fenAllergie.oeuf, fenAllergie.lactose, fenAllergie.arachide, fenAllergie.fodmap
-
-	
-	
+		
+		System.out.print("\nRecettes Francaises: ");
+		for (int i = 0; i<t.getFrancaisList().size(); i++){ // affichage dans console des repas pour debug
+			if (i==t.getFrancaisList().size()-1){
+				System.out.println(t.getFrancaisList().get(i));
+			}
+			else{
+				System.out.print(t.getFrancaisList().get(i)+", ");
+			}
+		}
+		
+		System.out.print("\nRecettes Italiennes: ");
+		for (int i = 0; i<t.getItalienList().size(); i++){ // affichage dans console des repas pour debug
+			if (i==t.getItalienList().size()-1){
+				System.out.println(t.getItalienList().get(i));
+			}
+			else{
+				System.out.print(t.getItalienList().get(i)+", ");
+			}
+		}
+		
+		System.out.print("\nRecettes Asiatiques: ");
+		for (int i = 0; i<t.getAsiatiqueList().size(); i++){ // affichage dans console des repas pour debug
+			if (i==t.getAsiatiqueList().size()-1){
+				System.out.println(t.getAsiatiqueList().get(i));
+			}
+			else{
+				System.out.print(t.getAsiatiqueList().get(i)+", ");
+			}
+		}
+		
+		System.out.print("\nRecettes Fast-Food: ");
+		for (int i = 0; i<t.getFastFoodList().size(); i++){ // affichage dans console des repas pour debug
+			if (i==t.getFastFoodList().size()-1){
+				System.out.println(t.getFastFoodList().get(i));
+			}
+			else{
+				System.out.print(t.getFastFoodList().get(i)+", ");
+			}
+		}
+		
+		System.out.print("\nRecettes Autres categories: ");
+		for (int i = 0; i<t.getAutreCategorieList().size(); i++){ // affichage dans console des repas pour debug
+			if (i==t.getAutreCategorieList().size()-1){
+				System.out.println(t.getAutreCategorieList().get(i));
+			}
+			else{
+				System.out.print(t.getAutreCategorieList().get(i)+", ");
+			}
+		}
 	}
-	
-	
 }
-
