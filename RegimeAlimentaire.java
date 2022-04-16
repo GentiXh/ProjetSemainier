@@ -13,11 +13,9 @@ public class RegimeAlimentaire extends JFrame{
 	JButton boutonOmnivore;
 	JButton boutonVegetarian;
 	JButton boutonVegan;
-	int regime;
 	Box box = Box.createVerticalBox(); // permet d'aligner verticalement les jpanel
-    public ProfilUtilisateur profil;
-    
-    
+	
+    public ProfilUtilisateur profil; //instance que l'on va passer en parametre tout du long qui va etre utilisee a stocker les choix de l'utilisateur dans la classe ProfilUtilisateur
     
     //Constructeur
     public RegimeAlimentaire() {
@@ -46,30 +44,32 @@ public class RegimeAlimentaire extends JFrame{
 		
 		profil = new ProfilUtilisateur();
       
-
+		//mise en couleur des panels qui constituent la fenetre
         fond.setBackground(new Color(255, 204, 204));
         fond2.setBackground(new Color(255, 204, 204));
 
+		// creation du label
         regimeAlimentaire.setBackground(new Color(255, 204, 153));
         regimeAlimentaire.setFont(new Font("Stencil", 0, 48)); 
         regimeAlimentaire.setVerticalAlignment(javax.swing.SwingConstants.TOP); 
         
-
+		//creation des 3 boutons de regime
         boutonOmnivore.setBackground(new Color(0, 0, 0));
         boutonOmnivore.setFont(new Font("Stencil", 0, 36));
         boutonOmnivore.setForeground(new Color(255, 204, 204));
-        boutonOmnivore.addActionListener(new EcouteurRegime(this,0, profil));
+        boutonOmnivore.addActionListener(new EcouteurRegime(this, 0, profil));		//valeur 0 correspond a un regime omnivore
         
         boutonVegetarian.setBackground(new Color(0, 0, 0));
         boutonVegetarian.setFont(new Font("Stencil", 0, 36)); 
         boutonVegetarian.setForeground(new Color(255, 204, 204));
-        boutonVegetarian.addActionListener(new EcouteurRegime(this, 1,profil)); 
+        boutonVegetarian.addActionListener(new EcouteurRegime(this, 1, profil)); 	//valeur 1 correspond a un regime vegetarien
 
         boutonVegan.setBackground(new Color(0, 0, 0));
         boutonVegan.setFont(new Font("Stencil", 0, 36));
         boutonVegan.setForeground(new Color(255, 204, 204));
-        boutonVegan.addActionListener(new EcouteurRegime(this, 2,profil)); 
-				
+        boutonVegan.addActionListener(new EcouteurRegime(this, 2, profil)); 		//valeur 2 correspond a un regime vegan
+		
+		//ajout des elements graphiques		
 		this.add(fond);
 		fond.add(fond2, BorderLayout.CENTER);
 		fond2.add(box);
@@ -80,10 +80,5 @@ public class RegimeAlimentaire extends JFrame{
        
        //Rendre la fenêtre visible
         this.setVisible(true);
-
-	}
-    // met à jour le regime
-    public void setRegime(int val){
-		regime=val;
 	}
 }
