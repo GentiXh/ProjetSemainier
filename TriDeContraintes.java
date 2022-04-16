@@ -96,7 +96,7 @@ public class TriDeContraintes{
 				statement = conDB.createStatement();
 				
 				//requetes SQL
-				query = statement.executeQuery("Select r.nomRecette, r.type from recettes r, ingredients i, compo c where r.idRecette = c.idRecette AND i.idIngredient = c.idIngredient AND "+Regime+" AND "+Gluten+" AND "+Oeuf+" AND "+Lactose+" AND "+Arachide+" AND "+Fodmap);
+				query = statement.executeQuery("select r.type, r.nomRecette, count(c.idIngredient) from recettes r, compo c, ingredients i where r.idRecette = c.idRecette and i.idIngredient = c.idIngredient and "+Regime+" and "+Gluten+" and "+Lactose+" and "+Oeuf+" and "+Fodmap+" and "+Arachide+" group by c.idRecette having count(c.idIngredient) in (select count(c.idIngredient) from recettes r, compo c, ingredients i where r.idRecette = c.idRecette and i.idIngredient = c.idIngredient group by c.idRecette)");
 				//pour recettes diff de petits dejeuners
 				while(query.next()){
 					
