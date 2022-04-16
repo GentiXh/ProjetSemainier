@@ -9,7 +9,7 @@ public class TriDeContraintes{
 	
 	private int regime; 			// 0 pour omnivore, 1 pour vegetarien et 2 pour vegan
 	
-	// pour tous les allergenes : true => l'utilisateur est allergique a l'allergene en question => le code va cherche a exclure les ingredients qui contient cet allergene
+	// pour tous les allergenes : true => l'utilisateur est allergique a l'allergene en question => le code va cherche a exclure les ingredients qui contiennent cet allergene
 	private boolean gluten;
 	private boolean oeuf;
 	private boolean lactose;
