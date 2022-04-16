@@ -42,7 +42,6 @@ public class EcouteurAllergie implements ActionListener{
 			
 			fenetre.revalidate();
 			fenetre.repaint();
-			
 		}		
 		/**System.out.println("on est passe par ecouteur allergie");*/
 	}		
