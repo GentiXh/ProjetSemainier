@@ -62,7 +62,7 @@ public class Recette extends JFrame {
         //creation + appel d'une instance de tri qui permet de choisir les recettes correspondantes aux choix de l'utilisateur.
         //l'instance profil du ProfilUtilisateur passee en parametre a travers toute la chaine sequentielle des classes depuis RegimeAlimentaires jusqu'a ici, et puis finallement a TriDeContraintes
 		TriDeContraintes t = new TriDeContraintes(profil); 
-		t.Tri();											//appel la methode qui fait le tri selon les choix de l'utilisateur pour tout "type" de recette
+		t.Tri();					  //appel la methode qui fait le tri selon les choix de l'utilisateur pour tout "type" de recette
 		
 		//codes qui affichent le regime et la valeur du gluten sur la console depuis cette classe. A utiliser si besoin de debug
 		/**System.out.println(" gluten recette "+profil.gluten);*/
