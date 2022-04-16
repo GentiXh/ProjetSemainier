@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+//classe ou les preferences de l'utilisateur sont enregistrees
+
 public class ProfilUtilisateur{
 	public boolean gluten;
 	public boolean lactose;
@@ -10,9 +12,8 @@ public class ProfilUtilisateur{
 	public boolean oeuf;
 	public int regime;
 		
-	// allergene true => pas d'allergique, donc peut en manger
-	// allergene false => allergique, doit manger seulement recettes qui n'en contiennent PAS
-		
+	// allergene true => utilisateur allergique, donc code qui cherche les allergies a exclure
+	// allergene false => in contrarium
 		
 	public void setGluten(boolean g){
 		gluten = g;
@@ -32,5 +33,4 @@ public class ProfilUtilisateur{
 	public void setReg (int r){
 		regime = r;
 	}
-
 }
