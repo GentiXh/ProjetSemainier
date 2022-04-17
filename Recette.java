@@ -4,14 +4,7 @@ import java.awt.event.*;
 import java.util.*;
 
 public class Recette extends JFrame {
-	
-	//Panneaux d'affichages selon le type du plat
-	private JPanel francais;
-	private JPanel italien;
-	private JPanel asiatique;
-	private JPanel fastFood;
-	private JPanel petitDej;
-	private JPanel autreCategorie;
+		
 	
 	public Recette(ProfilUtilisateur profil){ //constructeur
 		
@@ -30,12 +23,50 @@ public class Recette extends JFrame {
         JPanel fond = new JPanel(new BorderLayout());
         JLabel titre = new JLabel("RECETTES",JLabel.CENTER);
         JTabbedPane jTabbedPane1 = new JTabbedPane();
-        francais = new JPanel();
-		italien = new JPanel();
-        asiatique = new JPanel();
-        fastFood = new JPanel();
-        petitDej = new JPanel();
-        autreCategorie = new JPanel();
+        
+        
+        //création des ArrayLists
+        ArrayList<String> listeFr = new ArrayList<String>();
+		ArrayList<String> listeIt = new ArrayList<String>();
+		ArrayList<String> listeAs = new ArrayList<String>();
+		ArrayList<String> listeFF = new ArrayList<String>();
+		ArrayList<String> listeDej = new ArrayList<String>();
+		ArrayList<String> listeAutre = new ArrayList<String>();
+		
+		//on remplit les ArrayLists
+		listeFr.add("Blanquette");
+		listeFr.add("Fondue Savoyarde");
+		listeFr.add("Raclette");
+		listeFr.add("Vive la Savoie");
+		
+		listeIt.add("Canelloni");
+		listeIt.add("Pizza");
+		listeIt.add("Gelato");
+		
+		listeAs.add("nouille");
+		listeAs.add("ramen");
+		listeAs.add("nems");
+		
+		listeFF.add("Hamburger");
+		listeFF.add("Hot Dog");
+		listeFF.add("Frite");
+		
+		listeDej.add("Crepes");
+		listeDej.add("Muesli");
+		listeDej.add("Lait");
+		
+		listeAutre.add("jambalaya");
+		listeAutre.add("couscous");
+		
+		
+        //les BoxRecette sont des JPanel
+        BoxRecette francais = new BoxRecette(listeFr);
+        BoxRecette italien = new BoxRecette(listeIt);
+        BoxRecette asiatique = new BoxRecette(listeAs);
+        BoxRecette fastFood = new BoxRecette(listeFF);
+        BoxRecette petitDej = new BoxRecette(listeDej);
+        BoxRecette autreCategorie = new BoxRecette(listeAutre);
+        
         
         fond.setBackground(new Color(204, 255, 204));
 		this.add(fond);
@@ -55,8 +86,10 @@ public class Recette extends JFrame {
         jTabbedPane1.addTab("Petit dejeuner", petitDej);
         jTabbedPane1.addTab("Autres", autreCategorie);
         
-        setVisible(true);
         
+        
+        setVisible(true);
+        /*
         // lien avec BD
         
         //creation + appel d'une instance de tri qui permet de choisir les recettes correspondantes aux choix de l'utilisateur.
@@ -65,8 +98,8 @@ public class Recette extends JFrame {
 		t.Tri();					  //appel la methode qui fait le tri selon les choix de l'utilisateur pour tout "type" de recette
 		
 		//codes qui affichent le regime et la valeur du gluten sur la console depuis cette classe. A utiliser si besoin de debug
-		/**System.out.println(" gluten recette "+profil.gluten);*/
-		/**System.out.println(" regime recette "+profil.regime);*/
+		/**System.out.println(" gluten recette "+profil.gluten);*
+		/**System.out.println(" regime recette "+profil.regime);*
 
         System.out.print("\nRecettes Petit dejeuner: ");
 		for (int i = 0; i<t.getPetitDejList().size(); i++){ // affichage dans console des repas pour debug
@@ -126,6 +159,6 @@ public class Recette extends JFrame {
 			else{
 				System.out.print(t.getAutreCategorieList().get(i)+", ");
 			}
-		}
+		}*/
 	}
 }
