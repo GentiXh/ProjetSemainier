@@ -16,8 +16,8 @@ public class ProfilUtilisateur{
 	private int regime;
 	
 	//Listes des repas petit dejeuner et repas "normaux" qui seront remplies depuis les choix de l'utilisateur sur l'ecouteur de Recette
-	private ArrayList<String> repasNormauxChoisis;
-	private ArrayList<String> repasPetitDejChoisis;
+	private ArrayList<String> repasNormauxChoisis = new ArrayList<String>();
+	private ArrayList<String> repasPetitDejChoisis = new ArrayList<String>();
 		
 	// allergene true => utilisateur allergique, donc code qui cherche les allergies a exclure
 	// allergene false => in contrarium
@@ -42,21 +42,25 @@ public class ProfilUtilisateur{
 	public void setReg (int r){
 		regime = r;
 	}
-	public void setRepasNormaux(String s){  			//appel du setteurs depuis ecouteurRegime avec le repas "checkee"
-		if(!repasNormauxChoisis.contains(s)){			//si la liste ne contient pas le repas...
-			repasNormauxChoisis.add(s);					//ajoute le dans la liste
-		}
-		else if (repasNormauxChoisis.contains(s)){		//sinon...
-			repasNormauxChoisis.remove(s);				//supprime le de la liste
+	public void ajouterRepasNormaux(String s){  
+		if (!repasNormauxChoisis.contains(s)){			
+			repasNormauxChoisis.add(s);
 		}
 	}
-	public void setRepasPetitDej(String s){				//idem mais pour les repas de petit dejeuner
-		if(!repasPetitDejChoisis.contains(s)){
+	public void ajouterRepasPetitDej(String s){ 
+		if (!repasPetitDejChoisis.contains(s)){ 			
 			repasPetitDejChoisis.add(s);
-		}
-		else if (repasNormauxChoisis.contains(s)){
-			repasPetitDejChoisis.remove(s);
-		}
+		}				
+	}
+	public void supprimerRepasNormaux(String s){  			
+		if (repasNormauxChoisis.contains(s)){
+			repasNormauxChoisis.remove(s);	
+		}			
+	}
+	public void supprimerRepasPetitDej(String s){  			
+		if (repasPetitDejChoisis.contains(s)){
+			repasPetitDejChoisis.remove(s);	
+		}			
 	}
 	
 	//Getteurs:
