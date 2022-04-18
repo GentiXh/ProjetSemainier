@@ -8,9 +8,9 @@ public class Recette extends JFrame {
 	
 	public Recette(ProfilUtilisateur profil){ //constructeur
 		
-		System.out.println("on passe par recette");
+		super("Recettes");
 		
-		ProfilUtilisateur p = profil;
+		System.out.println("on passe par recette");
 
 		//récuperer la taille de l'écran + mettre fenetre au centre de l'ecran  + fermeture
 		this.pack();
@@ -23,13 +23,20 @@ public class Recette extends JFrame {
         
         //mettre en attributs
         JPanel fond = new JPanel(new BorderLayout());
+        JPanel cote = new JPanel(new BorderLayout());
+        JPanel hautCote = new JPanel();
+        
         JLabel titre = new JLabel("RECETTES",JLabel.CENTER);
+        JButton btnValider = new JButton("Valider mes choix");
+        
+        btnValider.setBackground(new Color(0, 0, 0));
+		btnValider.setFont(new Font("Stencil", 0, 24));
+		btnValider.setForeground(new Color(204, 255, 204));
+		
         JTabbedPane jTabbedPane1 = new JTabbedPane();
         
-        
-		//creation + appel d'une instance de tri qui permet de choisir les recettes correspondantes aux choix de l'utilisateur.
-        //l'instance profil du ProfilUtilisateur passee en parametre a travers toute la chaine sequentielle des classes depuis RegimeAlimentaires jusqu'a ici, et puis finallement a TriDeContraintes
-		TriDeContraintes t = new TriDeContraintes(p); 
+        //création des ArrayLists
+		TriDeContraintes t = new TriDeContraintes(profil); 
 		t.Tri();					  //appel la methode qui fait le tri selon les choix de l'utilisateur pour tout "type" de recette
         
         //création des ArrayLists selon les types de repas
@@ -40,28 +47,35 @@ public class Recette extends JFrame {
 		ArrayList<String> listeDej = t.getPetitDejList();
 		ArrayList<String> listeAutre = t.getAutreCategorieList();
 		
-		//création des ArrayLists finales apres les choix de l'utilisateur
-		ArrayList<String> listeFinaleRepasNormaux = new ArrayList<String>();		//repas pas petit dejeuner
-		ArrayList<String> listeFinaleRepasPetitDej = new ArrayList<String>();		//repas petit dejeuner
+		ArrayList<String> repasCochesTotal = new ArrayList<String>();
+		ArrayList<String> dejCochesTotal = new ArrayList<String>();
+		
 		
         //les BoxRecette sont des JPanel
-        BoxRecette francais = new BoxRecette(listeFr);
-        BoxRecette italien = new BoxRecette(listeIt);
-        BoxRecette asiatique = new BoxRecette(listeAs);
-        BoxRecette fastFood = new BoxRecette(listeFF);
-        BoxRecette petitDej = new BoxRecette(listeDej);
-        BoxRecette autreCategorie = new BoxRecette(listeAutre);     
+        BoxRecette francais = new BoxRecette(listeFr, profil, t);
+        BoxRecette italien = new BoxRecette(listeIt, profil, t);
+        BoxRecette asiatique = new BoxRecette(listeAs, profil, t);
+        BoxRecette fastFood = new BoxRecette(listeFF, profil, t);
+        BoxRecette petitDej = new BoxRecette(listeDej, profil, t);
+        BoxRecette autreCategorie = new BoxRecette(listeAutre, profil, t);
         
         fond.setBackground(new Color(204, 255, 204));
+        cote.setBackground(new Color(204, 255, 204));
+        hautCote.setBackground(new Color(204, 255, 204));
 		this.add(fond);
 
         titre.setBackground(new Color(255, 255, 255));
         titre.setFont(new Font("Stencil", 0, 48)); 
     
 		fond.add(titre, BorderLayout.NORTH);
+		cote.add(btnValider,BorderLayout.CENTER);
+		cote.add(hautCote,BorderLayout.NORTH);
+		fond.add(cote, BorderLayout.EAST);
 		
         jTabbedPane1.setBackground(new Color(255, 255, 255));
         fond.add(jTabbedPane1, BorderLayout.CENTER);
+        
+        btnValider.addActionListener(new EcouteurValiderRecette(this, profil));
 
         jTabbedPane1.addTab("Francais", francais);
         jTabbedPane1.addTab("Italien", italien);     
