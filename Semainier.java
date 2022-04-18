@@ -4,7 +4,7 @@ import javax.swing.*;
 public class Semainier extends JFrame{      
   
 	// constructeur  
-	public Semainier(){     		 
+	public Semainier(ProfilUtilisateur p){     		 
 		
 		//récuperer la taille de l'écran + mettre fenetre au centre de l'ecran  + fermeture
 		this.pack();
