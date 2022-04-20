@@ -3,7 +3,6 @@ import javax.swing.*;
     
 public class Case extends JPanel{    
 	
-	
 	// constructeur  
 	public Case(ProfilUtilisateur p, String jour, Color couleur){
 				
