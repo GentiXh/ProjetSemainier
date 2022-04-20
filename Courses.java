@@ -26,16 +26,24 @@ public class Courses extends JFrame{
 		this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
         
+        JButton btnSemainier = new JButton("Retour au semainier");
+		btnSemainier.setBackground(new Color(0, 0, 0));
+		btnSemainier.setFont(new Font("Stencil", 0, 40));
+		btnSemainier.setForeground(new Color(252, 178, 178));
+		btnSemainier.addActionListener(new EcouteurCourses(this,profil));		       
         
         JPanel fond = new JPanel(new BorderLayout());
         JPanel milieu = new JPanel();
+        JPanel bas = new JPanel();
         milieu.setLayout(new GridLayout(listeCourses.size(),1));
         
         JLabel titre = new JLabel("Liste de courses :",JLabel.CENTER);
         
+        bas.add(btnSemainier); 
         
         fond.setBackground(new Color(252, 178, 178));
         milieu.setBackground(new Color(252, 178, 178));
+		bas.setBackground(new Color(252, 178, 178));
         titre.setFont(new java.awt.Font("Stencil", 0, 36)); 
 
 		creerListeCourses();   //appelle la methode au dessous qui trouve les ingredients de recette selectionnees et gardees par ProfilUtilisateur
@@ -53,8 +61,8 @@ public class Courses extends JFrame{
 		//ajout des éléments dans la fenetre
         fond.add(titre, BorderLayout.NORTH);
         fond.add(milieu, BorderLayout.CENTER);
+        fond.add(bas, BorderLayout.SOUTH);
 		this.add(fond);
-		
 		
 		//affichage de la fenetre 
 		this.setVisible(true); 
