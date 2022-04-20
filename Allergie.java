@@ -22,8 +22,6 @@ public class Allergie extends JFrame{
 		
 		super("Allergies");
 		
-		/**System.out.println("on passe par allergie");*/
-
 		//on initialise tous les elements graphiques (boutons, labels, checkbox etc)
 		JLabel titre = new JLabel("ALLERGIES",JLabel.CENTER);
 		allergieTexte = new JLabel("Allergie :");
