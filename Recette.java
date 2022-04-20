@@ -10,8 +10,6 @@ public class Recette extends JFrame {
 		
 		super("Recettes");
 		
-		System.out.println("on passe par recette");
-
 		//récuperer la taille de l'écran + mettre fenetre au centre de l'ecran  + fermeture
 		this.pack();
 		Dimension tailleEcran = Toolkit.getDefaultToolkit().getScreenSize();
@@ -23,16 +21,17 @@ public class Recette extends JFrame {
         
         //mettre en attributs
         JPanel fond = new JPanel(new BorderLayout());
-        JPanel cote = new JPanel(new BorderLayout());
-        JPanel hautCote = new JPanel();
+        JPanel bas = new JPanel();
         
         JLabel titre = new JLabel("RECETTES",JLabel.CENTER);
         JButton btnValider = new JButton("Valider mes choix");
         
+        
         btnValider.setBackground(new Color(0, 0, 0));
 		btnValider.setFont(new Font("Stencil", 0, 24));
 		btnValider.setForeground(new Color(204, 255, 204));
-		
+		btnValider.addActionListener(new EcouteurValiderRecette(this, profil));
+        
         JTabbedPane jTabbedPane1 = new JTabbedPane();
         
         //création des ArrayLists
@@ -60,22 +59,20 @@ public class Recette extends JFrame {
         BoxRecette autreCategorie = new BoxRecette(listeAutre, profil, t);
         
         fond.setBackground(new Color(204, 255, 204));
-        cote.setBackground(new Color(204, 255, 204));
-        hautCote.setBackground(new Color(204, 255, 204));
+        bas.setBackground(new Color(204, 255, 204));
+        
 		this.add(fond);
 
         titre.setBackground(new Color(255, 255, 255));
         titre.setFont(new Font("Stencil", 0, 48)); 
     
+		
 		fond.add(titre, BorderLayout.NORTH);
-		cote.add(btnValider,BorderLayout.CENTER);
-		cote.add(hautCote,BorderLayout.NORTH);
-		fond.add(cote, BorderLayout.EAST);
+		bas.add(btnValider);
+		fond.add(bas, BorderLayout.SOUTH);
 		
         jTabbedPane1.setBackground(new Color(255, 255, 255));
         fond.add(jTabbedPane1, BorderLayout.CENTER);
-        
-        btnValider.addActionListener(new EcouteurValiderRecette(this, profil));
 
         jTabbedPane1.addTab("Francais", francais);
         jTabbedPane1.addTab("Italien", italien);     
