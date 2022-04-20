@@ -29,6 +29,7 @@ public class EcouteurAllergie2 implements ActionListener{
 			else {
 				profil.setGluten(false);
 			}
+			/**System.out.println(" gluten ecouteur "+profil.gluten);*/  //pour debug si besoin
 			n1++;
 		}
 		if (allergene == 2){				//lactose
