@@ -13,7 +13,7 @@ public class EcouteurValiderRecette implements ActionListener{
 	}
 	
 	public void actionPerformed(ActionEvent evt) {
-		if(!profil.getRepasNormaux().isEmpty() && !profil.getRepasPetitDej().isEmpty()){  //s'il y a au moins un repas normal et un repas petit dejeuner selectionnees
+		if(!profil.getRepasNormaux().isEmpty() && !profil.getRepasPetitDej().isEmpty()){  //s'il y a au moins un repas normal et un repas petit dejeuner selectionnees (sinon le bouton ne fait rien)
 			//creation + affichage d'une nouvelle fenetre Semainier
 			Semainier semainier = new Semainier(profil);
 			semainier.setVisible(true);
