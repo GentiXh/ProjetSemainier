@@ -45,7 +45,8 @@ public class EcouteurRecette implements ActionListener{
 			}
 			n++;
 		}
-			
+		
+	   System.out.println("VERIFICATION DES LISTES DES REPAS COCHES (DEBUG): \n");
 	   System.out.println("Liste des repas non petit dej coches");
        for(int i=0; i<profil.getRepasNormaux().size();i++){
 			System.out.println(profil.getRepasNormaux().get(i));
