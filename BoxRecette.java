@@ -5,13 +5,12 @@ import java.util.*;
     
 public class BoxRecette extends JPanel{    
 	    
-	private ArrayList<String> repasCoches = new ArrayList<String>();
 	private TriDeContraintes tri;
 	
 	// constructeur  
 	public BoxRecette(ArrayList<String> repas, ProfilUtilisateur profil, TriDeContraintes t){
 		
-		this.tri = t;
+		tri = t;
 		
 		this.setLayout(new GridLayout(repas.size(),1));
 				
@@ -27,7 +26,6 @@ public class BoxRecette extends JPanel{
 			
 			//ajout de la CheckBox dans le panel
 			this.add(nomRecette);
-                    
         }        
 	}
 }  
