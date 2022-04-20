@@ -45,7 +45,6 @@ public class Case extends JPanel{
 		JLabel dejeuner = new JLabel("<HTML><U>DEJEUNER</U></HTML>",JLabel.CENTER);
 		JLabel diner = new JLabel("<HTML><U>DINER</U></HTML>",JLabel.CENTER);
 		
-		
 		JLabel mangePD = new JLabel(p.getRepasPetitDej().get((int)(Math.random()*( p.getRepasPetitDej().size()))), JLabel.CENTER);
 		JLabel mangeDej = new JLabel(p.getRepasNormaux().get((int)(Math.random()*( p.getRepasNormaux().size()))), JLabel.CENTER);
 		JLabel mangeDiner = new JLabel(p.getRepasNormaux().get((int)(Math.random()*( p.getRepasNormaux().size()))), JLabel.CENTER);
