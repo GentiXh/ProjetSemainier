@@ -6,7 +6,8 @@ public class Semainier extends JFrame{
 	private ProfilUtilisateur profil;
 	
 	// constructeur  
-	public Semainier(ProfilUtilisateur p){     		 
+	public Semainier(ProfilUtilisateur p){ 
+		    		 
 		super("Planning de la semaine");
 		
 		profil = p;
@@ -21,14 +22,14 @@ public class Semainier extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
         
         //création des différentes cases du planning
-        Case jourLundi = new Case("LUNDI", new Color(255, 153, 153));
-        Case jourMardi = new Case("MARDI", new Color(255, 204, 153));
-        Case jourMercredi = new Case("MERCREDI", new Color(255, 255, 153));
-        Case jourJeudi = new Case("JEUDI", new Color(204, 255, 153));
-        Case jourVendredi = new Case("VENDREDI", new Color(153, 255, 153));
-        Case jourSamedi = new Case("SAMEDI", new Color(153, 255, 204));
-        Case jourDimanche = new Case("DIMANCHE", new Color(153, 255, 255));
-        
+        Case jourLundi = new Case(profil, "LUNDI", new Color(255, 153, 153));
+        Case jourMardi = new Case(profil,"MARDI", new Color(255, 204, 153));
+        Case jourMercredi = new Case(profil,"MERCREDI", new Color(255, 255, 153));
+        Case jourJeudi = new Case(profil,"JEUDI", new Color(204, 255, 153));
+        Case jourVendredi = new Case(profil,"VENDREDI", new Color(153, 255, 153));
+        Case jourSamedi = new Case(profil,"SAMEDI", new Color(153, 255, 204));
+        Case jourDimanche = new Case(profil,"DIMANCHE", new Color(153, 255, 255));
+            
         //création de la dernière case qui contiendra le logo d'happyfrigo
         JPanel case8 = new JPanel(new BorderLayout());  
         JPanel milieu = new JPanel();  
@@ -38,7 +39,7 @@ public class Semainier extends JFrame{
 		case8.setBorder(BorderFactory.createLineBorder(Color.black));
 		
 		JLabel question = new JLabel("Une liste de courses ?", JLabel.CENTER);
-		question.setFont(new Font("Stencil", 0, 36));
+		question.setFont(new Font("Stencil", 0, 40));
 		case8.add(question,BorderLayout.NORTH);
 		
 		JLabel logo = new JLabel("HAPPYFRIGO " , JLabel.CENTER);
@@ -47,10 +48,9 @@ public class Semainier extends JFrame{
 		
 		JButton btnCourses = new JButton("C'est par ici !");
 		btnCourses.setBackground(new Color(51, 51, 51));
-		btnCourses.setFont(new Font("Stencil", 0, 24));
+		btnCourses.setFont(new Font("Stencil", 0, 40));
 		btnCourses.setForeground(new Color(204, 204, 255));
-		
-        btnCourses.addActionListener(new EcouteurValiderSemainier(this, profil));
+		btnCourses.addActionListener(new EcouteurValiderSemainier(this,profil));
 
 		milieu.add(btnCourses);
 		
