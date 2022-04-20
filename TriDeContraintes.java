@@ -31,7 +31,7 @@ public class TriDeContraintes{
 	private ArrayList<String> listeRecetteItalien; 				//repas italien
 	private ArrayList<String> listeRecetteAsiatique;			//repas asiatique
 	private ArrayList<String> listeRecetteFastFood; 			//repas fast food
-	private ArrayList<String> listeRecetteAutreCategorie;    		//repas autre categorie
+	private ArrayList<String> listeRecetteAutreCategorie;    	//repas autre categorie
 	
 	//constructeur
 	public TriDeContraintes(ProfilUtilisateur p){
@@ -155,15 +155,6 @@ public class TriDeContraintes{
 			}
 		}
 		
-		public void effacerContraintes(){ 				//vider les listes si besoin/debug
-			listeRecettePetitDej.clear();
-			listeRecetteFrancais.clear();
-			listeRecetteItalien.clear();
-			listeRecetteAsiatique.clear();
-			listeRecetteFastFood.clear();
-			listeRecetteAutreCategorie.clear();
-		}
-		
 		//getteurs des listes de recettes selon les types
 		
 		public ArrayList <String> getItalienList(){
@@ -188,5 +179,5 @@ public class TriDeContraintes{
 		
 		public ArrayList <String> getPetitDejList(){
 			return new ArrayList<String>(listeRecettePetitDej);
-		}
+		}		
 }
