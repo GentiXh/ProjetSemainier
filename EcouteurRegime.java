@@ -25,8 +25,6 @@ public class EcouteurRegime implements ActionListener{
         fenetreAllergie.setVisible(true);
         
         //pour cacher l'ancienne fenêtre
-		/**System.out.println("on est passe par ecouteur regime");*/
 		fenetreRegime.dispose();
-		/**System.out.println("regime alimentaire se ferme");*/
     }
 }
