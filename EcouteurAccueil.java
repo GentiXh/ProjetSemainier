@@ -10,9 +10,7 @@ public class EcouteurAccueil implements ActionListener{
 		fenetre=fen;
 	}
 	
-	public void actionPerformed(ActionEvent evt) {                                         
-        /**System.out.println("on passe par ecouteur go");*/
-		
+	public void actionPerformed(ActionEvent evt) {                                         		
 		//une nouvelle fenetre regime apparait quand on clique sur go
         RegimeAlimentaire f = new RegimeAlimentaire();
         f.setVisible(true);
