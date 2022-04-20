@@ -18,6 +18,6 @@ public class EcouteurValiderAllergie implements ActionListener{
 		recette.setVisible(true);
 		//pour cacher l'ancienne fenêtre(allergie)
 		fenetre.dispose();
-		/**System.out.println("on est passe par ecouteur valider");*/
     }
 }
+
