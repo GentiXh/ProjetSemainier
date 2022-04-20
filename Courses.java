@@ -9,12 +9,14 @@ public class Courses extends JFrame{
   
 	private ProfilUtilisateur profil;
 	private ArrayList<String> listeCourses; //liste des courses des ingredients pour les recettes choisies
+	
 	// constructeur  
 	public Courses(ProfilUtilisateur p){     		 
 		super("Liste de Courses");
 		
 		profil = p;
 		listeCourses = new ArrayList<String>();
+		
 		//récuperer la taille de l'écran + mettre fenetre au centre de l'ecran  + fermeture
 		this.pack();
 		Dimension tailleEcran = Toolkit.getDefaultToolkit().getScreenSize();
@@ -26,31 +28,33 @@ public class Courses extends JFrame{
         
         
         JPanel fond = new JPanel(new BorderLayout());
+        JPanel milieu = new JPanel();
+        milieu.setLayout(new GridLayout(listeCourses.size(),1));
+        
         JLabel titre = new JLabel("Liste de courses :",JLabel.CENTER);
         
         
         fond.setBackground(new Color(252, 178, 178));
+        milieu.setBackground(new Color(252, 178, 178));
         titre.setFont(new java.awt.Font("Stencil", 0, 36)); 
-        
-        
-        //ajout des éléments dans la fenetre
-        
-        //mettre la liste de courses dans le CENTER !!
-        fond.add(titre, BorderLayout.NORTH);
-		this.add(fond);
-		
-		creerListeCourses();
-		this.setLayout(new GridLayout(listeCourses.size(),1));
+
+		creerListeCourses();   //appelle la methode au dessous qui trouve les ingredients de recette selectionnees et gardees par ProfilUtilisateur
 		
 		for(int i=0;i<listeCourses.size();i++){
 			
-			JLabel ingredient = new JLabel(listeCourses.get(i));
+			JLabel ingredient = new JLabel("- "+listeCourses.get(i));
 						
 			ingredient.setFont(new Font("Stencil", 0, 24));	
 			
-			this.add(ingredient);
+			milieu.add(ingredient);
                 
         }  
+		
+		//ajout des éléments dans la fenetre
+        fond.add(titre, BorderLayout.NORTH);
+        fond.add(milieu, BorderLayout.CENTER);
+		this.add(fond);
+		
 		
 		//affichage de la fenetre 
 		this.setVisible(true); 
