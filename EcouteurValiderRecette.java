@@ -13,11 +13,13 @@ public class EcouteurValiderRecette implements ActionListener{
 	}
 	
 	public void actionPerformed(ActionEvent evt) {
-        //creation + affichage d'une nouvelle fenetre Semainier
-        Semainier semainier = new Semainier(profil);
-		semainier.setVisible(true);
-		//pour cacher l'ancienne fenêtre (Recette)
-		fenetre.dispose();
-    }
+		if(!profil.getRepasNormaux().isEmpty() && !profil.getRepasPetitDej().isEmpty()){  //s'il y a au moins un repas normal et un repas petit dejeuner selectionnees
+			//creation + affichage d'une nouvelle fenetre Semainier
+			Semainier semainier = new Semainier(profil);
+			semainier.setVisible(true);
+			//pour cacher l'ancienne fenêtre (Recette)
+			fenetre.dispose();
+		}
+	}
 }
 
