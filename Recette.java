@@ -5,7 +5,6 @@ import java.util.*;
 
 public class Recette extends JFrame {
 		
-	
 	public Recette(ProfilUtilisateur profil){ //constructeur
 		
 		super("Recettes");
@@ -21,9 +20,11 @@ public class Recette extends JFrame {
         
         //mettre en attributs
         JPanel fond = new JPanel(new BorderLayout());
-        JPanel bas = new JPanel();
+        JPanel bas = new JPanel(new BorderLayout());
+        JPanel contenuBtn = new JPanel();
         
         JLabel titre = new JLabel("RECETTES",JLabel.CENTER);
+        JLabel mention = new JLabel("**Pour valider, il faut sélectionner au minimum un repas et un petit-déjeuner.**");
         JButton btnValider = new JButton("Valider mes choix");
         
         
@@ -48,15 +49,17 @@ public class Recette extends JFrame {
         
         fond.setBackground(new Color(204, 255, 204));
         bas.setBackground(new Color(204, 255, 204));
+        contenuBtn.setBackground(new Color(204, 255, 204));
         
 		this.add(fond);
 
         titre.setBackground(new Color(255, 255, 255));
         titre.setFont(new Font("Stencil", 0, 48)); 
     
-		
+		contenuBtn.add(btnValider);
 		fond.add(titre, BorderLayout.NORTH);
-		bas.add(btnValider);
+		bas.add(contenuBtn,BorderLayout.EAST);
+		bas.add(mention,BorderLayout.WEST);
 		fond.add(bas, BorderLayout.SOUTH);
 		
         jTabbedPane1.setBackground(new Color(255, 255, 255));
