@@ -36,27 +36,15 @@ public class Recette extends JFrame {
         
         //création des ArrayLists
 		TriDeContraintes t = new TriDeContraintes(profil); 
-		t.Tri();					  //appel la methode qui fait le tri selon les choix de l'utilisateur pour tout "type" de recette
+		t.Tri();					 //appel la methode qui fait le tri selon les choix de l'utilisateur pour tout type de recette
         
-        //création des ArrayLists selon les types de repas
-        ArrayList<String> listeFr = t.getFrancaisList();
-		ArrayList<String> listeIt = t.getItalienList();
-		ArrayList<String> listeAs = t.getAsiatiqueList();
-		ArrayList<String> listeFF = t.getFastFoodList();
-		ArrayList<String> listeDej = t.getPetitDejList();
-		ArrayList<String> listeAutre = t.getAutreCategorieList();
-		
-		ArrayList<String> repasCochesTotal = new ArrayList<String>();
-		ArrayList<String> dejCochesTotal = new ArrayList<String>();
-		
-		
         //les BoxRecette sont des JPanel
-        BoxRecette francais = new BoxRecette(listeFr, profil, t);
-        BoxRecette italien = new BoxRecette(listeIt, profil, t);
-        BoxRecette asiatique = new BoxRecette(listeAs, profil, t);
-        BoxRecette fastFood = new BoxRecette(listeFF, profil, t);
-        BoxRecette petitDej = new BoxRecette(listeDej, profil, t);
-        BoxRecette autreCategorie = new BoxRecette(listeAutre, profil, t);
+        BoxRecette francais = new BoxRecette(t.getFrancaisList(), profil, t);
+        BoxRecette italien = new BoxRecette(t.getItalienList(), profil, t);
+        BoxRecette asiatique = new BoxRecette(t.getAsiatiqueList(), profil, t);
+        BoxRecette fastFood = new BoxRecette(t.getFastFoodList(), profil, t);
+        BoxRecette petitDej = new BoxRecette(t.getPetitDejList(), profil, t);
+        BoxRecette autreCategorie = new BoxRecette(t.getAutreCategorieList(), profil, t);
         
         fond.setBackground(new Color(204, 255, 204));
         bas.setBackground(new Color(204, 255, 204));
