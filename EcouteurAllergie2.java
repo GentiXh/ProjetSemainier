@@ -71,6 +71,5 @@ public class EcouteurAllergie2 implements ActionListener{
 			}			
 			n5++;
 		}
-		/**System.out.println("on est passe par ecouteur allergie2");*/
     }
 }
