@@ -46,10 +46,15 @@ public class Case extends JPanel{
 		JLabel diner = new JLabel("<HTML><U>DINER</U></HTML>",JLabel.CENTER);
 		
 		
-		JLabel mangePD = new JLabel("- "+p.getRepasPetitDej().get((int)(Math.random()*( p.getRepasPetitDej().size()))), JLabel.CENTER);
-		JLabel mangeDej = new JLabel("- "+p.getRepasNormaux().get((int)(Math.random()*( p.getRepasNormaux().size()))), JLabel.CENTER);
-		JLabel mangeDiner = new JLabel("- "+p.getRepasNormaux().get((int)(Math.random()*( p.getRepasNormaux().size()))), JLabel.CENTER);
+		JLabel mangePD = new JLabel(p.getRepasPetitDej().get((int)(Math.random()*( p.getRepasPetitDej().size()))), JLabel.CENTER);
+		JLabel mangeDej = new JLabel(p.getRepasNormaux().get((int)(Math.random()*( p.getRepasNormaux().size()))), JLabel.CENTER);
+		JLabel mangeDiner = new JLabel(p.getRepasNormaux().get((int)(Math.random()*( p.getRepasNormaux().size()))), JLabel.CENTER);
 		
+		//ajout des recettes sur la liste finale des recettes (pas de doublons...voir ProfilUtilisateur)
+		p.ajouterRepasFinale(mangePD.getText());
+		p.ajouterRepasFinale(mangeDej.getText());
+		p.ajouterRepasFinale(mangeDiner.getText());
+			
 		//set d'une nouvelle police de caractère
 		petitDej.setFont(new Font("Stencil", 0, 30));
 		dejeuner.setFont(new Font("Stencil", 0, 30));
@@ -64,11 +69,9 @@ public class Case extends JPanel{
 		caseDej.add(dejeuner,BorderLayout.NORTH);
 		caseDiner.add(diner,BorderLayout.NORTH);
 		
-		
 		casePetitDej.add(mangePD,BorderLayout.CENTER);
 		caseDej.add(mangeDej,BorderLayout.CENTER);
 		caseDiner.add(mangeDiner,BorderLayout.CENTER);
-		
 		
 		//ajout des différents sous panels dans le grand panel recette
 		recette.add(casePetitDej);
