@@ -38,7 +38,7 @@ public class RegimeAlimentaire extends JFrame{
         fond2 = new JPanel(new GridBagLayout()); // permet de mettre au centre de la fenetre
         regimeAlimentaire = new JLabel("Regime Alimentaire",JLabel.CENTER);
         boutonOmnivore = new JButton("Omnivore");
-        boutonVegetarian = new JButton("Vegetarian");
+        boutonVegetarian = new JButton("Vegetarien");
         boutonVegan = new JButton("Vegan");
 		
 		profil = new ProfilUtilisateur();
