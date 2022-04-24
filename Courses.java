@@ -55,7 +55,7 @@ public class Courses extends JFrame{
 
 		// on ajoute les ingredients a l'affichage
 		for(int i=0;i<listeCourses.size();i++){			
-			JLabel ingredient = new JLabel("- "+listeCourses.get(i)/*,JLabel.CENTER*/);				
+			JLabel ingredient = new JLabel("- "+listeCourses.get(i),JLabel.CENTER);				
 			ingredient.setFont(new Font("Stencil", 0, 24));				
 			milieu.add(ingredient);                
         }  
